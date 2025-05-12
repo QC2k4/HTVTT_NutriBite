@@ -32,6 +32,8 @@ document.addEventListener('DOMContentLoaded', function() {
   const renderHeader = () => {
     const headerElement = document.getElementById("profileSection");
     if (headerElement) {
+      const userName = localStorage.getItem("userName") || "Guest";
+      
       headerElement.innerHTML = `
         <header>
         <div class="logo"><img src="img/logo.png" alt="" class="logo-img" onclick="window.location.href='index-after-signin.html'"></div>
@@ -46,7 +48,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </nav>
         <button class="profile-btn" id="profileBtn">
             <img src="img/avatar.png" alt="User" class="profile-img" id="headerAvatar">
-            <span>Anh Hoang</span>
+            <span>${userName}</span>
           </button>
     </header>
         <div class="modal" id="profileModal">
@@ -64,7 +66,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="profile-section">
               <h3>About</h3>
               <div class="profile-info">
-                <div class="info-item"><div class="info-label">Name:</div><div>Anh Hoang</div></div>
+                <div class="info-item"><div class="info-label">Name:</div><div>${userName}</div></div>
                 <div class="info-item"><div class="info-label">Age:</div><div>18</div></div>
                 <div class="info-item"><div class="info-label">Height:</div><div>180cm</div></div>
                 <div class="info-item"><div class="info-label">Email:</div><div>user1sa@gmail.com</div></div>
@@ -566,4 +568,64 @@ function renderBlogPosts() {
   setupFoodItemHover();
   setupTogglePassword();
   setupCreatePost();
+});
+
+
+
+
+/*====================================================
+* SIGN IN API AJAX CALL
+====================================================*/
+// Wait for the DOM to fully load
+document.addEventListener("DOMContentLoaded", function () {
+    // Select the form and its elements
+    const form = document.querySelector("form");
+    const emailOrPhoneInput = document.querySelector("input[type='text']");
+    const passwordInput = document.querySelector("input[type='password']");
+    const submitButton = document.querySelector(".signin-btn");
+
+    // Handle form submission with AJAX
+    form.addEventListener("submit", function (event) {
+        event.preventDefault();  // Prevent the form from submitting the traditional way
+
+        const emailOrPhone = emailOrPhoneInput.value.trim();
+        const password = passwordInput.value.trim();
+
+        // Perform basic validation (optional)
+        if (!emailOrPhone || !password) {
+            alert("Please enter both email/phone and password.");
+            return;
+        }
+
+        // Prepare the data to be sent to the API
+        const data = {
+            email_or_phone: emailOrPhone,
+            password: password
+        };
+
+        // Send AJAX request to Flask API
+        fetch("http://127.0.0.1:5000/user/signin", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message) {
+                alert(data.message);  // If login is successful
+                localStorage.setItem("userName", data.name);  // if you return name from Flask
+                window.location.href = "index-after-signin.html";
+                // Redirect to the user dashboard or homepage, for example:
+                // window.location.href = "/user/dashboard";
+            } else if (data.error) {
+                alert(data.error);  // If there's an error (e.g., invalid credentials)
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("An error occurred. Please try again later.");
+        });
+    });
 });
