@@ -33,6 +33,13 @@ document.addEventListener('DOMContentLoaded', function() {
     const headerElement = document.getElementById("profileSection");
     if (headerElement) {
       const userName = localStorage.getItem("userName") || "Guest";
+       const userAge = localStorage.getItem("userAge") || "Unknown";
+       const userHeight = localStorage.getItem("userHeight") || "Unknown";
+       const userWeight = localStorage.getItem("userWeight") || "Unknown";
+       const userBMI = localStorage.getItem("userBMI") || "Unknown";
+       const userPhone = localStorage.getItem("userPhone") || "Unknown";
+       const userEmail = localStorage.getItem("userEmail") || "Unknown";
+       const userReligion = localStorage.getItem("userReligion") || "Unknown";
       
       headerElement.innerHTML = `
         <header>
@@ -66,13 +73,13 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="profile-section">
               <h3>About</h3>
               <div class="profile-info">
-                <div class="info-item"><div class="info-label">Name:</div><div>${userName}</div></div>
-                <div class="info-item"><div class="info-label">Age:</div><div>18</div></div>
-                <div class="info-item"><div class="info-label">Height:</div><div>180cm</div></div>
-                <div class="info-item"><div class="info-label">Email:</div><div>user1sa@gmail.com</div></div>
-                <div class="info-item"><div class="info-label">Phone:</div><div>09011132133</div></div>
-                <div class="info-item"><div class="info-label">Religion:</div><div>Buddhism</div></div>
-              </div>
+                 <div class="info-item"><div class="info-label">Name:</div><div>${userName}</div></div>
+                 <div class="info-item"><div class="info-label">Age:</div><div>${userAge}</div></div>
+                 <div class="info-item"><div class="info-label">Height:</div><div>${userHeight}</div></div>
+                 <div class="info-item"><div class="info-label">Email:</div><div>${userEmail}</div></div>
+                 <div class="info-item"><div class="info-label">Phone:</div><div>${userPhone}</div></div>
+                 <div class="info-item"><div class="info-label">Religion:</div><div>${userReligion}</div></div>
+               </div>
               <button class="btn btn-outline" id="updateBtn" onclick="window.location.href='update-user.html'">Update</button>
               <button class="btn btn-outline" id="CreatepostBtn" onclick="window.location.href='create-post.html'">Create post</button>
             </div>
@@ -615,7 +622,14 @@ document.addEventListener("DOMContentLoaded", function () {
         .then(data => {
             if (data.message) {
                 alert(data.message);  // If login is successful
-                localStorage.setItem("userName", data.name);  // if you return name from Flask
+                localStorage.setItem("userName", data.name);  // Store the user's name
+                localStorage.setItem("userAge", data.age);  // Store age
+                localStorage.setItem("userHeight", data.height);  // Store height
+                localStorage.setItem("userWeight", data.weight);  // Store weight
+                localStorage.setItem("userBMI", data.bmi);  // Store BMI
+                localStorage.setItem("userPhone", data.phone);  // Store phone
+                localStorage.setItem("userEmail", data.email);  // Store email
+                localStorage.setItem("userReligion", data.religion);  // Store religion
                 window.location.href = "index-after-signin.html";
                 // Redirect to the user dashboard or homepage, for example:
                 // window.location.href = "/user/dashboard";
