@@ -20,41 +20,41 @@
     
         <form>
           <label>First Name</label>
-          <input type="text" placeholder="Enter your first name">
-    
+          <input type="text" name="firstName" placeholder="Enter your first name">
+        
           <label>Last Name</label>
-          <input type="text" placeholder="Enter your last name">
-    
+          <input type="text" name="lastName" placeholder="Enter your last name">
+        
           <label>Email</label>
-          <input type="email" placeholder="Enter your email">
-    
+          <input type="email" name="email" placeholder="Enter your email">
+        
           <label>Phone</label>
-          <input type="text" placeholder="Enter your phone number">
-    
+          <input type="text" name="phone" placeholder="Enter your phone number">
+        
           <label>Religion</label>
-          <select>
+          <select name="religion">
             <option value="" disabled selected>Select your religion</option>
-            <option value="buddhism">Buddhism</option>
-            <option value="christianity">Christianity</option>
-            <option value="islam">Islam</option>
-            <option value="hinduism">Hinduism</option>
-            <option value="none">Prefer not to say</option>
-            <option value="other">Other</option>
+            <option value="Buddhism">Buddhism</option>
+            <option value="Christianity">Christianity</option>
+            <option value="Islam">Islam</option>
+            <option value="Hinduism">Hinduism</option>
+            <option value="None">Prefer not to say</option>
+            <option value="Other">Other</option>
           </select>
-    
+        
           <div class="password-box">
             <label>New password</label>
-            <input type="password" placeholder="Enter your new password" id="new-password">
+            <input type="password" name="password" placeholder="Enter your new password" id="new-password">
             <span class="toggle-password" onclick="togglePassword('new-password', this)">👁️</span>
           </div>
           
           <div class="password-box">
             <label>Confirm password</label>
-            <input type="password" placeholder="Enter your new password" id="confirm-password">
+            <input type="password" name="confirmPassword" placeholder="Enter your new password" id="confirm-password">
             <span class="toggle-password" onclick="togglePassword('confirm-password', this)">👁️</span>
           </div>
-    
-          <button type="submit" class="signin-btn">Sign Up</button>
+        
+          <button type="submit" class="signin-btn" id="signup-btn">Sign Up</button>
         </form>
     
         <div class="divider">or</div>
