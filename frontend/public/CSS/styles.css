@@ -277,6 +277,10 @@ footer {
     margin-bottom: 0; 
   }
   
+.signin-box select{
+  width: 740px;
+}
+
   .subtitle {
     color: #333;
     font-size: 20px;

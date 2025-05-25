@@ -401,16 +401,15 @@ const setupTogglePassword = () => {
       
       if (input.type === "password") {
         input.type = "text";
-        this.textContent = "🙈";
+        this.textContent = "🙉";
       } else {
         input.type = "password";
-        this.textContent = "👁️";
+        this.textContent = "🙈";
       }
     });
   });
 };
 
-  
   // ========== BLOG ==========
 // Trong blog.html
 const blogPosts = JSON.parse(localStorage.getItem('blogPosts') || '[]');
@@ -578,7 +577,9 @@ function renderBlogPosts() {
 });
 
 
-
+function directPage(name){
+  window.location.href = name + '.html';
+}
 
 /*====================================================
 * SIGN IN API AJAX CALL
