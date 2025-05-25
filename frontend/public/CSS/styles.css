@@ -544,7 +544,7 @@ select {
   font-size: 25px;
 }
 .bmi-scale {
-  width: 100%;
+  width: 90%;
   height: 40px;
   background: linear-gradient(90deg, #63b3ed 0%, #68d391 25%, #f6e05e 50%, #f6ad55 75%, #f56565 100%);
   border-radius: 20px;
