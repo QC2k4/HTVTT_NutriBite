@@ -1,301 +1,458 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>NutriBite</title>
-    <link rel="stylesheet" href="public/CSS/styles.css">
-</head>
-<body>
+    <link rel="stylesheet" href="public/CSS/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
     <header>
-        <div class="logo"><img src="img/logo.png" alt="" class="logo-img" onclick="window.location.href='index.html'"></div>
-        <nav>
-            <ul>
-                <li><a href="#" class="nav-item active" onclick="showPage('homepage')">Home</a></li>
-                <li><a href="#" class="nav-item" onclick="showPage('explore')">Explore</a></li>
-                <li><a href="#" class="nav-item" onclick="showPage('blog')">Blog</a></li>
-                <li><a href="#" class="nav-item" onclick="showPage('BMI')">BMI calculator</a></li>
-                <li><a href="#" class="nav-item" onclick="showPage('favorite-list')">My favorite list</a></li>
-            </ul>
-        </nav>
-        <div class="auth-buttons">
-            <button class="sign-up" onclick="window.location.href='signup.html'">Sign Up</button>
-            <button class="sign-in" onclick="window.location.href='signin.html'">Sign In</button>
-        </div>
+      <div class="logo">
+        <img
+          src="img/logo.png"
+          alt=""
+          class="logo-img"
+          onclick="window.location.href='index.html'"
+        />
+      </div>
+      <nav>
+        <ul>
+          <li>
+            <a href="#" class="nav-item active" onclick="showPage('homepage')"
+              >Home</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-item" onclick="showPage('explore')"
+              >Explore</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-item" onclick="showPage('blog')">Blog</a>
+          </li>
+          <li>
+            <a href="#" class="nav-item" onclick="showPage('BMI')"
+              >BMI calculator</a
+            >
+          </li>
+          <li>
+            <a href="#" class="nav-item" onclick="showPage('favorite-list')"
+              >My favorite list</a
+            >
+          </li>
+        </ul>
+      </nav>
+      <div class="auth-buttons">
+        <button class="sign-up" onclick="window.location.href='signup.html'">
+          Sign Up
+        </button>
+        <button class="sign-in" onclick="window.location.href='signin.html'">
+          Sign In
+        </button>
+      </div>
     </header>
 
     <!-- TRANG CHINH -->
     <div id="homepage" class="page active">
-        <div class="main-container">
-            <video class="background-video" autoplay loop muted playsinline>
-                <source src="img/background-video.mp4" type="video/mp4">
-            </video>
-            <h1 class="main-title">Craving something tasty? Let us help!</h1>
-            
-            <div class="search-area">
-                <input type="text" class="search-box" placeholder="Search...">
-                <img src="img/search.png" alt="" class="search-icon">
-            </div>
+      <div class="main-container">
+        <video class="background-video" autoplay loop muted playsinline>
+          <source src="img/background-video.mp4" type="video/mp4" />
+        </video>
+        <h1 class="main-title">Craving something tasty? Let us help!</h1>
+
+        <div class="search-area">
+          <input type="text" class="search-box" placeholder="Search..." />
+          <img src="img/search.png" alt="" class="search-icon" />
         </div>
-        
-        <div class="category-container">
-            <div class="category">
-                <img src="img/breakfast.png" alt="">    
-                Breakfast
-            </div>
-            <div class="category">
-                <img src="img/lunch.png" alt=""> 
-                Lunch
-            </div>
-            <div class="category">
-                <img src="img/dinner.png" alt=""> 
-                Dinner
-            </div>
-            <div class="category">
-                <img src="img/dessert.png" alt=""> 
-                Dessert
-            </div>
-            <div class="category">
-                <img src="img/appertizer.png" alt=""> 
-                Appetizer
-            </div>
-            <div class="category">
-                <img src="img/drinks.png" alt=""> 
-                Drinks
-            </div>
-            <div class="category">
-                <img src="img/snacks.png" alt=""> 
-                Snacks
-            </div>
-            <div class="category">
-                <img src="img/holiday.png" alt=""> 
-                Holiday
-            </div>
+      </div>
+
+      <div class="recipe-container">
+        <div class="recipe">
+          <img
+            src="img/ChickenPastaPrimavera.png"
+            alt="Chicken Pasta Primavera"
+          />
+          <h2>Chicken Pasta Primavera</h2>
+          <p>50 mins</p>
         </div>
-    
-        <div class="recipe-container">
-            <div class="recipe">
-                <img src="img/ChickenPastaPrimavera.png" alt="Chicken Pasta Primavera">
-                <h2>Chicken Pasta Primavera</h2>
-                <p>50 mins</p>
-            </div>
-            <div class="recipe">
-                <img src="img/Grilled Salmon Bruschetta with Avocado.png" alt="Grilled Salmon Bruschetta with Avocado">
-                <h2>Grilled Salmon Bruschetta with Avocado</h2>
-                <p>50 mins</p>
-            </div>
-            <div class="recipe">
-                <img src="img/Homemade Chai Masala.png" alt="Homemade Chai Masala">
-                <h2>Homemade Chai Masala</h2>
-                <p>50 mins</p>
-            </div>
-            <div class="recipe">
-                <img src="img/Cabbage Steak.png" alt="Cabbage Steak">
-                <h2>Cabbage Steak</h2>
-                <p>50 mins</p>
-            </div>
+        <div class="recipe">
+          <img
+            src="img/Grilled Salmon Bruschetta with Avocado.png"
+            alt="Grilled Salmon Bruschetta with Avocado"
+          />
+          <h2>Grilled Salmon Bruschetta with Avocado</h2>
+          <p>50 mins</p>
         </div>
+        <div class="recipe">
+          <img src="img/Homemade Chai Masala.png" alt="Homemade Chai Masala" />
+          <h2>Homemade Chai Masala</h2>
+          <p>50 mins</p>
+        </div>
+        <div class="recipe">
+          <img src="img/Cabbage Steak.png" alt="Cabbage Steak" />
+          <h2>Cabbage Steak</h2>
+          <p>50 mins</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="about-nutribite">
+      <div class="about-container">
+        <h1 class="welcome-title">WELCOME!</h1>
+
+        <div class="about-content">
+          <div class="about-text">
+            <p>
+              Hi there! I'm Clara - nutrition enthusiast, recipe
+              developer, and firm believer that healthy food should never
+              compromise on flavor. I'm fueled by fresh ingredients, culinary
+              creativity, and the joy of sharing good food with others.
+            </p>
+
+            <p>
+              In 2023, I created NutriBite with a simple mission: to make
+              nutritious eating accessible, delicious, and fun for everyone.
+              Whether you're a busy parent, fitness enthusiast, or just someone
+              looking to eat better, I'm here to show you that wholesome meals
+              can be incredibly satisfying.
+            </p>
+
+            <p>
+              As a certified nutritionist and passionate home cook, I've spent
+              years perfecting recipes that nourish both body and soul. You'll
+              find no bland "diet food" here - just vibrant, flavor-packed
+              dishes that happen to be good for you too!
+            </p>
+
+            <p>
+              Ready to transform your relationship with healthy eating? Explore
+              hundreds of my kitchen-tested recipes below, along with practical
+              tips to make nutritious cooking effortless. I hope these recipes
+              bring as much joy to your table as they have to mine!
+            </p>
+
+            <!-- Social Media -->
+            <div class="about-social">
+              <h3>Follow Us</h3>
+              <ul class="social-list">
+                <li>
+                  <a
+                    href="https://facebook.com/yourpage"
+                    target="_blank"
+                    aria-label="Facebook"
+                    ><i class="fab fa-facebook-f"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    href="https://instagram.com/yourpage"
+                    target="_blank"
+                    aria-label="Instagram"
+                    ><i class="fab fa-instagram"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    href="https://twitter.com/yourpage"
+                    target="_blank"
+                    aria-label="Twitter"
+                    ><i class="fab fa-twitter"></i
+                  ></a>
+                </li>
+                <li>
+                  <a
+                    href="https://pinterest.com/yourpage"
+                    target="_blank"
+                    aria-label="Pinterest"
+                    ><i class="fab fa-pinterest-p"></i
+                  ></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="about-image">
+            <img
+              src="img/about-photo.jpg"
+              alt="[Your Name] with fresh ingredients"
+            />
+          </div>
+        </div>
+      </div>
     </div>
 
     <div id="explore" class="page">
-        <div class="explore-container">
-            <h1 class="explore-title">EXPLORE</h1>
-            <p class="subtitle" style="text-align: center; margin-top: 1rem;">Discover New Recipes & Trends</p>
-            
-            <div class="search-area">
-              <input type="text" class="search-box" placeholder="Search...">
-              <img src="img/search.png" alt="" class="search-icon">
-          </div>
-            
-            <h2 class="section-title">Categories</h2>
-            <div class="categories">
-                <div class="category-card">
-                    <h3>Seasonal Recipes</h3>
-                </div>
-                <div class="category-card">
-                    <h3>Keto Friendly</h3>
-                </div>
-                <div class="category-card">
-                    <h3>Vegan Delights</h3>
-                </div>
-                <div class="category-card">
-                    <h3>High-Protein Dishes</h3>
-                </div>
-                <div class="category-card">
-                    <h3>Quick Meals (&lt;30 mins)</h3>
-                </div>
-                <div class="category-card">
-                    <h3>Global Cuisine</h3>
-                </div>
-            </div>
-            
-            <div class="trending">
-                <h2 class="section-title">Trending Now</h2>
-                <div class="trending-recipes">
-                    <div class="recipe-card">
-                        <div class="recipe-img" style="background-image: url('https://th.bing.com/th/id/OIP.WuZ1Kh6hZ62D6KxpcuGReQHaLH?pid=ImgDet&w=184&h=276&c=7&dpr=1.3');"></div>
-                        <p>Bowl Healthy Morning (4.8<span>★</span>)</p>
-                    </div>
-                    <div class="recipe-card">
-                        <div class="recipe-img" style="background-image: url('https://bing.com/th?id=OSK.227782ed7c28ee0d819c7db6d44ca851');"></div>
-                        <p>Spicy Lentil Soup (4.6<span>★</span>)</p>
-                    </div>
-                    <div class="recipe-card">
-                        <div class="recipe-img" style="background-image: url('https://bing.com/th?id=OSK.f442015bc9a6fe004e53bd8e8652d4eb');"></div>
-                        <p>Avocado Toast 3 Ways (4.9<span>★</span>)</p>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="nutrition-tips">
-                <h2 class="section-title">Nutrition Tips</h2>
-                <ul>
-                    <li>How to Balance Macros</li>
-                    <li>Superfoods for Immunity</li>
-                    <li>Meal Prep for Beginners</li>
-                </ul>
-            </div>
+      <div class="explore-container">
+        <h1 class="explore-title">EXPLORE</h1>
+        <p class="subtitle" style="text-align: center; margin-top: 1rem">
+          Discover New Recipes & Trends
+        </p>
+
+        <div class="search-area">
+          <input type="text" class="search-box" placeholder="Search..." />
+          <img src="img/search.png" alt="" class="search-icon" />
         </div>
+
+        <h2 class="section-title">Categories</h2>
+        <div class="categories">
+          <div class="category-card">
+            <h3>Seasonal Recipes</h3>
+          </div>
+          <div class="category-card">
+            <h3>Keto Friendly</h3>
+          </div>
+          <div class="category-card">
+            <h3>Vegan Delights</h3>
+          </div>
+          <div class="category-card">
+            <h3>High-Protein Dishes</h3>
+          </div>
+          <div class="category-card">
+            <h3>Quick Meals (&lt;30 mins)</h3>
+          </div>
+          <div class="category-card">
+            <h3>Global Cuisine</h3>
+          </div>
+        </div>
+
+        <div class="trending">
+          <h2 class="section-title">Trending Now</h2>
+          <div class="trending-recipes">
+            <div class="recipe-card">
+              <div
+                class="recipe-img"
+                style="
+                  background-image: url('https://th.bing.com/th/id/OIP.WuZ1Kh6hZ62D6KxpcuGReQHaLH?pid=ImgDet&w=184&h=276&c=7&dpr=1.3');
+                "
+              ></div>
+              <p>Bowl Healthy Morning (4.8<span>★</span>)</p>
+            </div>
+            <div class="recipe-card">
+              <div
+                class="recipe-img"
+                style="
+                  background-image: url('https://bing.com/th?id=OSK.227782ed7c28ee0d819c7db6d44ca851');
+                "
+              ></div>
+              <p>Spicy Lentil Soup (4.6<span>★</span>)</p>
+            </div>
+            <div class="recipe-card">
+              <div
+                class="recipe-img"
+                style="
+                  background-image: url('https://bing.com/th?id=OSK.f442015bc9a6fe004e53bd8e8652d4eb');
+                "
+              ></div>
+              <p>Avocado Toast 3 Ways (4.9<span>★</span>)</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="nutrition-tips">
+          <h2 class="section-title">Nutrition Tips</h2>
+          <ul>
+            <li>How to Balance Macros</li>
+            <li>Superfoods for Immunity</li>
+            <li>Meal Prep for Beginners</li>
+          </ul>
+        </div>
+      </div>
     </div>
 
     <div id="blog" class="page">
-        <div class="explore-container">
-            <h1 class="explore-title">BLOG</h1>
-            <p class="subtitle" style="text-align: center; margin-top: 1rem;">Nutrition & Wellness Insights</p>
-            
-            <div class="featured-post">
-                <div class="featured-img" style="background-image: url('https://th.bing.com/th/id/R.26f2d030c82824d092e6ba5d3e2eb23d?rik=5V39W%2bCIU2D71w&riu=http%3a%2f%2frbk.h-cdn.co%2fassets%2f16%2f31%2f1600x800%2flandscape-1470164324-picmonkey-collage.jpg&ehk=DtP33jY1DJmj0sKkHx0GEPP3VfAcv%2f9%2fiYqcbVqBbIM%3d&risl=&pid=ImgRaw&r=0');"></div>
-                <h2>10 Foods to Boost Your Energy Naturally</h2>
-                <a href="#" class="read-more">Read More</a>
-            </div>
-            
-            <div class="blog-categories">
-                <h2 class="section-title">Categories</h2>
-                <div class="categories-list">
-                    <span class="category-tag">Healthy Eating</span>
-                    <span class="category-tag">Weight Management</span>
-                    <span class="category-tag">Recipes Guides</span>
-                    <span class="category-tag">Science of Nutrition</span>
-                </div>
-            </div>
-            
-            <h2 class="section-title">Recent Articles</h2>
-            <div class="recent-articles">
-                <div class="article-card">
-                    <div class="article-img" style="background-image: url('https://th.bing.com/th/id/OIP.-xlW-X1TH2NGixEeJeG81wHaHa?rs=1&pid=ImgDetMain');"></div>
-                    <h3>Meal Planning 101</h3>
-                    <p>Tips to save time and eat better.</p>
-                    <a href="#" class="article-link">Read more...</a>
-                </div>
-                <div class="article-card">
-                    <div class="article-img" style="background-image: url('https://www.kokilabenhospital.com/blog/wp-content/uploads/2022/07/Common-nutrition-myths-1024x419.jpg');"></div>
-                    <h3>Debunking Diet Myths</h3>
-                    <p>Separating facts from fads.</p>
-                    <a href="#" class="article-link">Read more...</a>
-                </div>
-            </div>
-            
-            <div class="subscribe">
-                <h2>Subscribe for Updates</h2>
-                <form class="subscribe-form">
-                    <input type="email" placeholder="Your email address">
-                    <button type="submit">Subscribe</button>
-                </form>
-            </div>
+      <div class="explore-container">
+        <h1 class="explore-title">BLOG</h1>
+        <p class="subtitle" style="text-align: center; margin-top: 1rem">
+          Nutrition & Wellness Insights
+        </p>
+
+        <div class="featured-post">
+          <div
+            class="featured-img"
+            style="
+              background-image: url('https://th.bing.com/th/id/R.26f2d030c82824d092e6ba5d3e2eb23d?rik=5V39W%2bCIU2D71w&riu=http%3a%2f%2frbk.h-cdn.co%2fassets%2f16%2f31%2f1600x800%2flandscape-1470164324-picmonkey-collage.jpg&ehk=DtP33jY1DJmj0sKkHx0GEPP3VfAcv%2f9%2fiYqcbVqBbIM%3d&risl=&pid=ImgRaw&r=0');
+            "
+          ></div>
+          <h2>10 Foods to Boost Your Energy Naturally</h2>
+          <a href="#" class="read-more">Read More</a>
         </div>
+
+        <div class="blog-categories">
+          <h2 class="section-title">Categories</h2>
+          <div class="categories-list">
+            <span class="category-tag">Healthy Eating</span>
+            <span class="category-tag">Weight Management</span>
+            <span class="category-tag">Recipes Guides</span>
+            <span class="category-tag">Science of Nutrition</span>
+          </div>
+        </div>
+
+        <h2 class="section-title">Recent Articles</h2>
+        <div class="recent-articles">
+          <div class="article-card">
+            <div
+              class="article-img"
+              style="
+                background-image: url('https://th.bing.com/th/id/OIP.-xlW-X1TH2NGixEeJeG81wHaHa?rs=1&pid=ImgDetMain');
+              "
+            ></div>
+            <h3>Meal Planning 101</h3>
+            <p>Tips to save time and eat better.</p>
+            <a href="#" class="article-link">Read more...</a>
+          </div>
+          <div class="article-card">
+            <div
+              class="article-img"
+              style="
+                background-image: url('https://www.kokilabenhospital.com/blog/wp-content/uploads/2022/07/Common-nutrition-myths-1024x419.jpg');
+              "
+            ></div>
+            <h3>Debunking Diet Myths</h3>
+            <p>Separating facts from fads.</p>
+            <a href="#" class="article-link">Read more...</a>
+          </div>
+        </div>
+
+        <div class="subscribe">
+          <h2>Subscribe for Updates</h2>
+          <form class="subscribe-form">
+            <input type="email" placeholder="Your email address" />
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
+      </div>
     </div>
 
     <div id="BMI" class="page">
-        <div class="bmi-main">
-            <div class="bmi-card">
-              <h1 class="bmi-title">BMI Calculator</h1>
-              <div class="input-group">
-                <label>Your Height (cm)</label>
-                <input type="number" id="height" placeholder="cm">
+      <div class="bmi-main">
+        <div class="bmi-card">
+          <h1 class="bmi-title">BMI Calculator</h1>
+          <div class="input-group">
+            <label>Your Height (cm)</label>
+            <input type="number" id="height" placeholder="cm" />
+          </div>
+          <div class="input-group">
+            <label>Your Weight (kg)</label>
+            <input type="number" id="weight" placeholder="kg" />
+          </div>
+          <div class="gender-group">
+            <label>Gender</label>
+            <label
+              ><input type="radio" name="gender" value="male" /> Male</label
+            >
+            <label
+              ><input type="radio" name="gender" value="female" checked />
+              Female</label
+            >
+          </div>
+          <button class="signin-btn" onclick="calculateBMI()">
+            Compute BMI
+          </button>
+          <div class="result-box">
+            <h3>Your BMI</h3>
+            <input type="number" id="bmi-result" readonly placeholder="--" />
+          </div>
+          <div class="btn-row">
+            <button class="signin-btn">Return</button>
+            <button class="clear-btn" onclick="clearBMI()">Clear</button>
+          </div>
+        </div>
+        <div class="bmi-info">
+          <div class="bmi-result-box">
+            <h2><strong>Result</strong></h2>
+            <p id="bmi-message">
+              Please enter your height and weight to get your result.
+            </p>
+            <!-- Thêm thang đo BMI dynamic -->
+            <div class="bmi-scale">
+              <div class="bmi-marker" style="left: 18.5%">
+                <span class="bmi-marker-label">18.5</span>
               </div>
-              <div class="input-group">
-                <label>Your Weight (kg)</label>
-                <input type="number" id="weight" placeholder="kg">
+              <div class="bmi-marker" style="left: 25%">
+                <span class="bmi-marker-label">25</span>
               </div>
-              <div class="gender-group">
-                <label>Gender</label>
-                <label><input type="radio" name="gender" value="male"> Male</label>
-                <label><input type="radio" name="gender" value="female" checked> Female</label>
+              <div class="bmi-marker" style="left: 30%">
+                <span class="bmi-marker-label">30</span>
               </div>
-              <button class="signin-btn" onclick="calculateBMI()">Compute BMI</button>
-              <div class="result-box">
-                <h3>Your BMI</h3>
-                <input type="number" id="bmi-result" readonly placeholder="--"/>
-              </div>
-              <div class="btn-row">
-                <button class="signin-btn">Return</button>
-                <button class="clear-btn" onclick="clearBMI()">Clear</button>
-              </div>
+              <div
+                id="bmi-indicator"
+                class="bmi-indicator"
+                style="left: 0%; display: none"
+              ></div>
             </div>
-            <div class="bmi-info">
-                <div class="bmi-result-box">
-                  <h2><strong>Result</strong></h2>
-                  <p id="bmi-message">
-                    Please enter your height and weight to get your result.
-                  </p>
-                  <!-- Thêm thang đo BMI dynamic -->
-                  <div class="bmi-scale">
-                    <div class="bmi-marker" style="left: 18.5%;"><span class="bmi-marker-label">18.5</span></div>
-                    <div class="bmi-marker" style="left: 25%;"><span class="bmi-marker-label">25</span></div>
-                    <div class="bmi-marker" style="left: 30%;"><span class="bmi-marker-label">30</span></div>
-                    <div id="bmi-indicator" class="bmi-indicator" style="left: 0%; display: none;"></div>
-                  </div>
-                  <div id="bmi-advice" style="margin-top: 20px; font-size: 16px; color: #555;"></div>
-                  
-                   <!-- Thêm phần gợi ý đăng nhập/trang chủ -->
-                  <div id="login-suggestion" class="login-suggestion" style="display: none;"> 
-                    <p id="suggestion-text"></p> 
-                    </div>
-        
-                  <!-- Thêm phần lời khuyên về chế độ ăn uống -->
-                  <div id="diet-advice" class="diet-advice" style="display: none;">
-                    <h3>Healthy Lifestyle Recommendations</h3>
-                    <div id="specific-advice"></div>
-                    <p>General tips for everyone:</p>
-                    <ul>
-                      <li>🍎 Eat more fruits and vegetables (aim for 5 servings daily)</li>
-                      <li>💧 Stay hydrated (drink at least 2 liters of water per day)</li>
-                      <li>🏃‍♀️ Get at least 30 minutes of moderate exercise daily</li>
-                      <li>🛌 Ensure 7-9 hours of quality sleep each night</li>
-                      <li>🧘‍♂️ Practice stress-reduction techniques like meditation</li>
-                    </ul>
-                  </div>
-                </div>
-              </div>
+            <div
+              id="bmi-advice"
+              style="margin-top: 20px; font-size: 16px; color: #555"
+            ></div>
+
+            <!-- Thêm phần gợi ý đăng nhập/trang chủ -->
+            <div
+              id="login-suggestion"
+              class="login-suggestion"
+              style="display: none"
+            >
+              <p id="suggestion-text"></p>
             </div>
+
+            <!-- Thêm phần lời khuyên về chế độ ăn uống -->
+            <div id="diet-advice" class="diet-advice" style="display: none">
+              <h3>Healthy Lifestyle Recommendations</h3>
+              <div id="specific-advice"></div>
+              <p>General tips for everyone:</p>
+              <ul>
+                <li>
+                  🍎 Eat more fruits and vegetables (aim for 5 servings daily)
+                </li>
+                <li>
+                  💧 Stay hydrated (drink at least 2 liters of water per day)
+                </li>
+                <li>🏃‍♀️ Get at least 30 minutes of moderate exercise daily</li>
+                <li>🛌 Ensure 7-9 hours of quality sleep each night</li>
+                <li>🧘‍♂️ Practice stress-reduction techniques like meditation</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div id="favorite-list" class="page">
-        <div class="favorite-section">
-            <h1>My Favorite List</h1>
-          
-            <div class="favorite-item">
-              <img src="img/ChickenPastaPrimavera.png" alt="Chicken Pasta">
-              <div class="food-info">
-                <div class="food-name food-name-favorite">Chicken Pasta Primavera</div>
-                <div class="food-time-favorite">50 mins</div>
-              </div>
-              <button class="remove-btn">Remove</button>
+      <div class="favorite-section">
+        <h1>My Favorite List</h1>
+
+        <div class="favorite-item">
+          <img src="img/ChickenPastaPrimavera.png" alt="Chicken Pasta" />
+          <div class="food-info">
+            <div class="food-name food-name-favorite">
+              Chicken Pasta Primavera
             </div>
-          
-            <div class="favorite-item">
-              <img src="img/Grilled Salmon Bruschetta with Avocado.png" alt="Grilled Salmon">
-              <div class="food-info">
-                <div class="food-name food-name-favorite">Grilled Salmon Bruschetta with Avocado</div>
-                <div class="food-time-favorite">50 mins</div>
-              </div>
-              <button class="remove-btn">Remove</button>
-            </div>
+            <div class="food-time-favorite">50 mins</div>
           </div>
+          <button class="remove-btn">Remove</button>
+        </div>
+
+        <div class="favorite-item">
+          <img
+            src="img/Grilled Salmon Bruschetta with Avocado.png"
+            alt="Grilled Salmon"
+          />
+          <div class="food-info">
+            <div class="food-name food-name-favorite">
+              Grilled Salmon Bruschetta with Avocado
+            </div>
+            <div class="food-time-favorite">50 mins</div>
+          </div>
+          <button class="remove-btn">Remove</button>
+        </div>
+      </div>
     </div>
 
     <footer id="footer"></footer>
     <script src="public/JS/script.js"></script>
-
-</body>
+  </body>
 </html>
