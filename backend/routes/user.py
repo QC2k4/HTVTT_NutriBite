@@ -96,8 +96,8 @@ def signup():
 
     # Insert the new user into the database
     stmt = insert(Users).values(
-        First_Name=first_name,
-        Last_Name=last_name,
+        FirstName=first_name,
+        LastName=last_name,
         Email=email,
         Phone=phone,
         Religion=religion,
@@ -115,3 +115,42 @@ def signup():
         # Log and return an error message if something goes wrong
         db.session.rollback()
         return jsonify({"error": "Sign up failed, please try again later."}), 500
+
+@user_bp.route('/update', methods=['PUT'])
+def update_user():
+    Users = Table('Users', db.metadata, autoload_with=db.engine)
+    data = request.get_json()
+
+    # Identifier to find the user (either Email or Phone)
+    identifier = data.get('Email') or data.get('Phone')
+    if not identifier:
+        return jsonify({"error": "Missing identifier (Email or Phone)"}), 400
+
+    # Allowed fields matching DB columns
+    allowed_fields = ['FirstName', 'LastName', 'Email', 'Phone', 'Height', 'Weight', 'Age', 'Religion']
+
+    update_fields = {k: (v.strip() if isinstance(v, str) else v) for k, v in data.items() if k in allowed_fields}
+
+    if not update_fields:
+        return jsonify({"error": "No fields provided to update"}), 400
+
+    stmt_select = select(Users).where(
+        or_(Users.c.Email == identifier, Users.c.Phone == identifier)
+    )
+    user = db.session.execute(stmt_select).fetchone()
+    if not user:
+        return jsonify({"error": "User not found"}), 404
+
+    stmt_update = (
+        Users.update()
+        .where(or_(Users.c.Email == identifier, Users.c.Phone == identifier))
+        .values(**update_fields)
+    )
+
+    try:
+        db.session.execute(stmt_update)
+        db.session.commit()
+        return jsonify({"message": "User updated successfully"}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"error": "Update failed", "details": str(e)}), 500

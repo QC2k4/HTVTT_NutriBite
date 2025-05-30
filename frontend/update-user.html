@@ -23,43 +23,43 @@
               <div class="row">
                 <div class="input-group">
                   <label>First Name</label>
-                  <input type="text" required />
+                  <input type="text" name="first_name" required />
                 </div>
                 <div class="input-group">
                   <label>Last Name</label>
-                  <input type="text" required />
+                  <input type="text" name="last_name" required />
                 </div>
               </div>
       
               <div class="input-group">
                 <label>Email</label>
-                <input type="email" required />
+                <input type="email" name="email" required />
               </div>
       
               <div class="input-group">
                 <label>Phone</label>
-                <input type="tel" required />
+                <input type="tel" name="phone" required />
               </div>
       
               <div class="row">
                 <div class="input-group">
                   <label>Height</label>
-                  <input type="text" placeholder="cm"/>
+                  <input type="text" name="height" placeholder="cm"/>
                 </div>
                 <div class="input-group">
                   <label>Weight</label>
-                  <input type="text" placeholder="kg"/>
+                  <input type="text" name="weight" placeholder="kg"/>
                 </div>
               </div>
       
               <div class="row">
                 <div class="input-group">
                   <label>Birthdate</label>
-                  <input type="date" id="birthdate" />
+                  <input type="date" name="birthdate" id="birthdate" />
                 </div>
                 <div class="input-group">
                   <label>Age</label>
-                  <input type="number" id="age" readonly />
+                  <input type="number" name="age" id="age" readonly />
                 </div>
               </div>
               
@@ -67,17 +67,17 @@
                     <label>Religion</label>
                     <select>
                       <option value="" disabled selected>Select your religion</option>
-                      <option value="buddhism">Buddhism</option>
-                      <option value="christianity">Christianity</option>
-                      <option value="islam">Islam</option>
-                      <option value="hinduism">Hinduism</option>
-                      <option value="none">Prefer not to say</option>
-                      <option value="other">Other</option>
+                      <option value="Buddhism">Buddhism</option>
+                      <option value="Christianity">Christianity</option>
+                      <option value="Islam">Islam</option>
+                      <option value="Hinduism">Hinduism</option>
+                      <option value="None">Prefer not to say</option>
+                      <option value="Other">Other</option>
                     </select>
                 </div>
       
               <div class="btn-row">
-                <button type="submit" class="reset-btn">Update</button>
+                <button type="submit" class="reset-btn" id="update-btn">Update</button>
                 <button type="button" class="reset-btn" id="change-pwd" onclick="directPage('change-password')">Change password</button>
               </div>
       
@@ -88,7 +88,7 @@
 
     <footer id="footer"></footer>
 
-      <script src="public/JS/script.js">
+      <script src="public/JS/update.js">
         const form = document.getElementById('updateForm');
         const successMsg = document.getElementById('successMsg');
       
