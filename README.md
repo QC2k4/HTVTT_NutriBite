@@ -1,0 +1,9 @@
+Backend:
+-Step 1: Mở Terminal
+-Step 2: cd backend
+-Step 3: python -m venv venv
+-Step 4: venv/Scripts/Activate || venv\Scripts\activate
+-Step 5: pip install -r requirements.txt
+-Step 6: python app.py
+
+-##Stop: deactivate venv\Scripts\activate
