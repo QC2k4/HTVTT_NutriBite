@@ -161,7 +161,7 @@ nav a {
 
 .search-box {
   display: block;
-  padding: 12px 45px 12px 20px; /* Tăng padding phải để có chỗ cho icon */
+  padding: 12px 45px 12px 20px; 
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 20px;
@@ -177,11 +177,11 @@ nav a {
 
 .search-icon {
   position: absolute;
-  right: 15px; /* Khoảng cách từ icon đến viền phải */
+  right: 15px;
   top: 50%;
   transform: translateY(-50%);
   width: 25px;
-  height: 25px; /* Để không ảnh hưởng đến việc click gõ vào input */
+  height: 25px;
   cursor: pointer;
 }
 
@@ -335,7 +335,6 @@ nav a {
   text-align: center;
   width: 300px;
   height: fit-content;
-  margin-top: 50px;
   cursor: pointer;
 }
 
