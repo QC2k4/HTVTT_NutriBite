@@ -10,17 +10,17 @@
 <body style="background-color: #e4defb9a;">
     <div class="logo-section">
         <img src="img/logo.png" alt="" class="logo-img">
-        <button class="return" onclick="window.location.href='index-after-signin.html'">Return</button>
+        <button class="return" style="background-color: white; color: #d2c2ff;" onclick="window.location.href='index-after-signin.html'">Return</button>
     </div>
 
-    <div class="explore-container" style="margin-top: 100px;">
+    <div class="explore-container" style="margin-top: 100px; width: 90%;">
         <div class="create-post">
             <h1 class="">Create New Blog Post</h1>
             
             <form id="blogForm">
                 <div class="form-group">
                     <h2 class="section-title">Post Title</h2>
-                    <input type="text" id="postTitle" placeholder="Enter a catchy title..." required>
+                    <input type="text" style="width: 98%;" id="postTitle" placeholder="Enter a catchy title..." required>
                 </div>
                 
                 <div class="form-group">
@@ -28,42 +28,25 @@
                     <div class="image-upload" id="imageUpload">
                         <i class="fas fa-cloud-upload-alt"></i>
                         <p>Click to upload or drag and drop</p>
-                        <p>Recommended size: 800x400px</p>
                         <img id="imagePreview" alt="Preview">
                         <input type="file" id="postImage" accept="image/*" style="display: none;">
                     </div>
                 </div>
-                
-                <div class="form-group">
-                    <h2 class="section-title">Category</h2>
-                    <select id="postCategory" required>
-                        <option value="">Select a category</option>
-                        <option value="nutrition">Nutrition</option>
-                        <option value="recipes">Recipes</option>
-                        <option value="fitness">Fitness</option>
-                        <option value="wellness">Wellness</option>
-                        <option value="science">Science</option>
-                        <option value="diet"></option>
-                        <option value="vegan"></option>
-                    </select>
-                    
-                </div>
-                
+                                
                 <div class="form-group">
                     <h2 class="section-title">Post Content</h2>
-                    <textarea id="postContent" placeholder="Write your post content here..." required></textarea>
+                    <textarea id="postContent" style="width: 98%;" placeholder="Write your post content here..." required></textarea>
                 </div>
                 
                 <div class="form-group">
-                    <h2 class="section-title">Short Excerpt (Summary)</h2>
-                    <textarea id="postExcerpt" placeholder="Write a short summary (max 150 characters)" maxlength="150" required></textarea>
+                    <h2 class="section-title">Summary</h2>
+                    <textarea id="postExcerpt" style="width: 98%;" placeholder="Write a short summary (max 150 characters)" maxlength="150" required></textarea>
                 </div>
                 
                 <button type="submit" class="btn-submit" id="submitBtn" disabled>Publish Post</button>
             </form>
         </div>
     </div>
-
     <footer id="footer"></footer>
     <script src="public/JS/script.js"></script>
 </body>

@@ -523,7 +523,6 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("postTitle").value.trim() &&
         postContent.value.trim() &&
         excerpt.value.trim() &&
-        document.getElementById("postCategory").value &&
         postImage.files.length > 0;
       document.getElementById("submitBtn").disabled = !isValid;
     };
