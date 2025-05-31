@@ -2,7 +2,7 @@ import os
 
 SQL_SERVER = {
     "server": "localhost",
-    "database": "HTVTT",
+    "database": "NutriBite",
     "driver": "ODBC Driver 17 for SQL Server"
 }
 
