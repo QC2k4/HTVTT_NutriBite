@@ -50,6 +50,9 @@ document.addEventListener("DOMContentLoaded", function () {
       const userEmail = localStorage.getItem("userEmail") || "Unknown";
       const userReligion = localStorage.getItem("userReligion") || "Unknown";
 
+      //gender
+      const userGender = localStorage.getItem("userGender") || "Unknown";
+
       headerElement.innerHTML = `
         <header>
         <div class="logo"><img src="img/logo.png" alt="" class="logo-img" onclick="window.location.href='index-after-signin.html'"></div>
@@ -85,7 +88,7 @@ document.addEventListener("DOMContentLoaded", function () {
               <div class="profile-info">
                  <div class="info-item"><div class="info-label">Name:</div><div>${userName}</div></div>
                  <div class="info-item"><div class="info-label">Age:</div><div>${userAge}</div></div>
-                 <div class="info-item"><div class="info-label">Height:</div><div>${userHeight}</div></div>
+                 <div class="info-item"><div class="info-label">Gender:</div><div>${userGender}</div></div> 
                  <div class="info-item"><div class="info-label">Email:</div><div>${userEmail}</div></div>
                  <div class="info-item"><div class="info-label">Phone:</div><div>${userPhone}</div></div>
                  <div class="info-item"><div class="info-label">Religion:</div><div>${userReligion}</div></div>
@@ -96,8 +99,9 @@ document.addEventListener("DOMContentLoaded", function () {
             <div class="profile-section">
               <h3>Health Info</h3>
               <div class="profile-info">
-                <div class="info-item"><div class="info-label">BMI:</div><div>${userBMI}</div></div>
                 <div class="info-item"><div class="info-label">Weight:</div><div>${userWeight}</div></div>
+                <div class="info-item"><div class="info-label">Height:</div><div>${userHeight}</div></div>
+                <div class="info-item"><div class="info-label">BMI:</div><div>${userBMI}</div></div>
               </div>
             </div>
             <div class="profile-section">
