@@ -9,7 +9,7 @@ SQL_SERVER = {
 }
 
 #H.Anh
-SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc://@ANHLEHOANG333\\ANHHOANG/Food_System?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes&encrypt=no&TrustServerCertificate=yes'
+# SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc://@ANHLEHOANG333\\ANHHOANG/Food_System?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes&encrypt=no&TrustServerCertificate=yes'
 
 #Quang
 # SQLALCHEMY_DATABASE_URI = (
