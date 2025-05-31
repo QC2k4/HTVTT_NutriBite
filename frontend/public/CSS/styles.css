@@ -154,9 +154,8 @@ nav a {
 .search-area {
   position: relative;
   width: 70%;
-  max-width: 800px;
-  min-width: 400px;
   margin: 0 auto;
+  height: 100px;
 }
 
 .search-box {
@@ -178,7 +177,7 @@ nav a {
 .search-icon {
   position: absolute;
   right: 15px;
-  top: 50%;
+  top: 27%;
   transform: translateY(-50%);
   width: 25px;
   height: 25px;
