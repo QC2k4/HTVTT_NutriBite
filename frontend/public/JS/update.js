@@ -24,6 +24,9 @@ document.addEventListener("DOMContentLoaded", () => {
     // Handle AJAX form submission
     form.addEventListener("submit", function (e) {
       e.preventDefault();
+
+      const currentEmail = localStorage.getItem("userEmail");
+      const currentPhone = localStorage.getItem("userPhone");
   
       const data = {
         FirstName: form.querySelector('input[name="first_name"]').value.trim(),
@@ -33,12 +36,14 @@ document.addEventListener("DOMContentLoaded", () => {
         Height: parseFloat(form.querySelector('input[name="height"]').value) || null,
         Weight: parseFloat(form.querySelector('input[name="weight"]').value) || null,
         Age: parseInt(form.querySelector('input[name="age"]').value) || null,
-        Religion: form.querySelector("select").value
+        Religion: form.querySelector("select").value,
+        currentEmail: currentEmail,
+        currentPhone: currentPhone
     };
   
       // Send data to backend
       fetch("http://127.0.0.1:5000/user/update", {
-        method: "PUT", // or PUT, based on your backend
+        method: "PUT",
         headers: {
           "Content-Type": "application/json"
         },
@@ -49,6 +54,9 @@ document.addEventListener("DOMContentLoaded", () => {
           return res.json();
         })
         .then(result => {
+          localStorage.setItem("userEmail", result.newEmail);
+          localStorage.setItem("userPhone", result.newPhone);
+
           successMsg.style.display = "block";
           setTimeout(() => (successMsg.style.display = "none"), 3000);
         })
