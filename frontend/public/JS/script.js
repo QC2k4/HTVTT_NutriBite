@@ -49,8 +49,6 @@ document.addEventListener("DOMContentLoaded", function () {
       const userPhone = localStorage.getItem("userPhone") || "Unknown";
       const userEmail = localStorage.getItem("userEmail") || "Unknown";
       const userReligion = localStorage.getItem("userReligion") || "Unknown";
-
-      //gender
       const userGender = localStorage.getItem("userGender") || "Unknown";
 
       headerElement.innerHTML = `
@@ -155,6 +153,7 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.setItem("userPhone", data.Phone);
           localStorage.setItem("userEmail", data.Email);
           localStorage.setItem("userReligion", data.TonGiao);
+          localStorage.setItem("userGender", data.GioiTinh);
   
           // 🔁 Do NOT call renderHeader() again
           // Instead: force full page refresh or instruct user to refresh, or call renderHeader() ONCE on page load
