@@ -1,4 +1,5 @@
 from flask import Blueprint, request, jsonify, flash, current_app
+from flask_cors import cross_origin
 from extensions import db  # your SQLAlchemy instance
 from sqlalchemy import Table, select, insert, or_
 from models import TaiKhoan, NguoiDung
@@ -134,47 +135,37 @@ def getInfo():
 
 @user_bp.route('/update', methods=['PUT'])
 def update_user():
-    Users = Table('Users', db.metadata, autoload_with=db.engine)
-    data = request.get_json()
+    data = request.json
+    claim = data.get("Claim")
 
-    # Identifier to find the user (either Email or Phone)
-    identifier = data.get('currentMail') or data.get('currentPhone')
-    if not identifier:
-        return jsonify({"error": "Missing identifier (Email or Phone)"}), 400
+    print(data.get('FirstName'), data.get('Phone'), data.get('Height'))
+
+
+    account = db.session.query(TaiKhoan).filter_by(TenDangNhap=claim).first()
+
+    if not account:
+        return jsonify(success=False, message="User not found"), 404
     
-    newEmail = data.get('currentEmail')
-    newPhone = data.get('currentPhone')
+    user = db.session.query(NguoiDung).filter_by(Email=claim).first()
 
-    # Allowed fields matching DB columns
-    allowed_fields = ['FirstName', 'LastName', 'Email', 'Phone', 'Height', 'Weight', 'Age', 'Religion']
+    # Update fields
+    account.TenDangNhap = data.get('Email')
+    user.HoTen = f"{data.get('FirstName')} {data.get('LastName')}"
+    user.Email = data.get('Email')
+    user.Phone = data.get('Phone')
+    user.ChieuCao = data.get('Height')
+    user.CanNang = data.get('Weight')
+    user.Tuoi = data.get('Age')
+    user.TonGiao = data.get('Religion')
 
-    update_fields = {k: (v.strip() if isinstance(v, str) else v) for k, v in data.items() if k in allowed_fields}
+    # If BMI is computed automatically, do it here
+    if user.CanNang and user.ChieuCao:
+        height_m = user.ChieuCao / 100
+        user.BMI = round(user.CanNang / (height_m ** 2), 2)
 
-    if not update_fields:
-        return jsonify({"error": "No fields provided to update"}), 400
+    db.session.commit()
+    return jsonify(success=True, newEmail=user.Email, newPhone=user.Phone, Claim=data.get('Email')), 200
 
-    stmt_select = select(Users).where(
-        or_(Users.c.Email == identifier, Users.c.Phone == identifier)
-    )
-    user = db.session.execute(stmt_select).fetchone()
-    if not user:
-        return jsonify({"error": "User not found"}), 404
-
-    stmt_update = (
-        Users.update()
-        .where(or_(Users.c.Email == identifier, Users.c.Phone == identifier))
-        .values(**update_fields)
-    )
-
-    try:
-        db.session.execute(stmt_update)
-        db.session.commit()
-        return jsonify({"message": "User updated successfully",
-                        "newEmail": newEmail,
-                        "newPhone": newPhone}), 200
-    except Exception as e:
-        db.session.rollback()
-        return jsonify({"error": "Update failed", "details": str(e)}), 500
 
 # http://127.0.0.1:5000/user?email_or_phone=<email_or_phone>
 @user_bp.route('/user/info', methods=['GET'])
