@@ -49,6 +49,7 @@ def signin():
             'phone': user.Phone,
             'email': user.Email,
             'religion': user.TonGiao,
+            'Claim': user.Email
         }
 
         return jsonify(response), 200
@@ -94,6 +95,42 @@ def signup():
     except Exception as e:
         db.session.rollback()
         return jsonify({"success": False, "message": str(e)}), 500
+    
+@user_bp.route('/get', methods=['POST'])
+def getInfo():
+    data = request.get_json()
+    try:
+        username = data.get('Claim')
+        print(username)
+
+        account = TaiKhoan.query.filter_by(TenDangNhap=username).first()
+        if not account:
+            return jsonify({'success': False, 'message': 'Account not found'}), 404
+
+        user = NguoiDung.query.filter_by(TaiKhoanID=account.TaiKhoanID).first()
+        if not user:
+            return jsonify({'success': False, 'message': 'User details not found'}), 404
+
+        return jsonify({
+            'success': True,
+            'TenDangNhap': account.TenDangNhap,
+            'NguoiDungID': user.NguoiDungID,
+            'HoTen': user.HoTen,
+            'NgaySinh': user.NgaySinh,
+            'Tuoi': user.Tuoi,
+            'Email': user.Email,
+            'Phone': user.Phone,
+            'TonGiao': user.TonGiao,
+            'GioiTinh': user.GioiTinh,
+            'ChieuCao': user.ChieuCao,
+            'CanNang': user.CanNang,
+            'BMI': user.BMI
+        }), 200
+
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)}), 500
+
+
 
 @user_bp.route('/update', methods=['PUT'])
 def update_user():

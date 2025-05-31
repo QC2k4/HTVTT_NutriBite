@@ -17,6 +17,9 @@ function showPage(pageId) {
 
 function logout() {
   if (confirm("Bạn có chắc chắn muốn đăng xuất?")) {
+    console.log(">> logout() called");
+    localStorage.clear();
+    sessionStorage.clear();
     window.location.href = "index.html";
   }
 }
@@ -120,6 +123,45 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
       setupProfileModal();
     }
+  };
+
+  const fetchAndStoreUserInfo = () => {
+    const username = localStorage.getItem("Claim");
+  
+    if (!username) {
+      console.warn("No username found");
+      return;
+    }
+  
+    fetch("http://127.0.0.1:5000/user/get", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ Claim: username })
+    })
+      .then(res => res.json())
+      .then(data => {
+        if (data.success) {
+          localStorage.setItem("userName", data.HoTen);
+          localStorage.setItem("userAge", data.Tuoi);
+          localStorage.setItem("userHeight", data.ChieuCao);
+          localStorage.setItem("userWeight", data.CanNang);
+          localStorage.setItem("userBMI", data.BMI);
+          localStorage.setItem("userPhone", data.Phone);
+          localStorage.setItem("userEmail", data.Email);
+          localStorage.setItem("userReligion", data.TonGiao);
+  
+          // 🔁 Do NOT call renderHeader() again
+          // Instead: force full page refresh or instruct user to refresh, or call renderHeader() ONCE on page load
+        } else {
+          alert("Error: " + data.message);
+        }
+        renderHeader();
+      })
+      .catch(error => {
+        console.error("Fetch error:", error);
+      });
   };
 
   const setupProfileModal = () => {
@@ -588,12 +630,16 @@ document.addEventListener("DOMContentLoaded", function () {
   };
 
   function logout() {
-    window.location.href = "login.html";
+    console.log(">> logout() called");
+    localStorage.clear();
+    sessionStorage.clear();
+    // window.location.href = "login.html"; // Temporarily disable redirect
   }
 
   // ========== KHỞI CHẠY CÁC HÀM ==========
   renderFooter();
   renderHeader();
+  fetchAndStoreUserInfo();
   setupBMICalculator();
   setupFeedbackSystem();
   setupFoodItemHover();

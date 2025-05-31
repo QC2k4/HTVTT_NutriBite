@@ -40,14 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         .then((data) => {
           if (data.message) {
             alert(data.message); // If login is successful
-            localStorage.setItem("userName", data.username); // Store the user's name
-            localStorage.setItem("userAge", data.age); // Store age
-            localStorage.setItem("userHeight", data.height); // Store height
-            localStorage.setItem("userWeight", data.weight); // Store weight
-            localStorage.setItem("userBMI", data.bmi); // Store BMI
-            localStorage.setItem("userPhone", data.phone); // Store phone
-            localStorage.setItem("userEmail", data.email); // Store email
-            localStorage.setItem("userReligion", data.religion); // Store religion
+            localStorage.setItem("Claim", data.Claim); // Store the user's logged in
             window.location.href = "index-after-signin.html";
           } else if (data.error) {
             alert(data.error); // If there's an error (e.g., invalid credentials)
