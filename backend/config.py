@@ -18,8 +18,6 @@ SQL_SERVER = {
 # )
 
 #Gia Bao
-SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc://DESKTOP-7VU15DP\SQLEXPRESS/Food_System?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes&encrypt=no&TrustServerCertificate=yes'
-
-
+# SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc://DESKTOP-7VU15DP\SQLEXPRESS/Food_System?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes&encrypt=no&TrustServerCertificate=yes'
 
 SQLALCHEMY_TRACK_MODIFICATIONS = False
