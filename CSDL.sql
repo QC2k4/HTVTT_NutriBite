@@ -43,6 +43,16 @@ CREATE TABLE Food (
 );
 GO
 
+-- Tạo bảng FavoriteList
+CREATE TABLE FavoriteList (
+    NguoiDungID INT,
+    FoodID VARCHAR(20),
+    PRIMARY KEY (NguoiDungID, FoodID),
+    FOREIGN KEY (NguoiDungID) REFERENCES NguoiDung(NguoiDungID),
+    FOREIGN KEY (FoodID) REFERENCES Food(FoodID)
+);
+GO
+
 -- Tạo bảng Food_Ingredient
 CREATE TABLE Food_Ingredient (
     ID INT PRIMARY KEY IDENTITY(1,1),

@@ -139,6 +139,7 @@ def update_user():
     claim = data.get("Claim")
 
     print(data.get('FirstName'), data.get('Phone'), data.get('Height'))
+    print(data.get('Gender'))
 
 
     account = db.session.query(TaiKhoan).filter_by(TenDangNhap=claim).first()
@@ -157,6 +158,7 @@ def update_user():
     user.CanNang = data.get('Weight')
     user.Tuoi = data.get('Age')
     user.TonGiao = data.get('Religion')
+    user.GioiTinh = data.get('Gender')
 
     # If BMI is computed automatically, do it here
     if user.CanNang and user.ChieuCao:
