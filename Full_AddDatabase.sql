@@ -18648,3 +18648,16 @@ INSERT INTO DanhGia (NguoiDungID, FoodID, SoSao, NhanXet, ThoiGian) VALUES (20, 
 INSERT INTO DanhGia (NguoiDungID, FoodID, SoSao, NhanXet, ThoiGian) VALUES (20, 'f101_0009', 5, N'Món ăn rất ngon và hấp dẫn.', '2024-08-06 03:06:11');
 INSERT INTO DanhGia (NguoiDungID, FoodID, SoSao, NhanXet, ThoiGian) VALUES (20, 'f101_0011', 3, N'Bình thường, không quá đặc biệt.', '2024-10-09 03:06:11');
 INSERT INTO DanhGia (NguoiDungID, FoodID, SoSao, NhanXet, ThoiGian) VALUES (20, 'f101_0098', 4, N'Hợp khẩu vị.', '2024-12-07 03:06:11');
+
+INSERT INTO FavoriteList (NguoiDungID, FoodID)
+VALUES (2, 'f101_0269');
+INSERT INTO FavoriteList (NguoiDungID, FoodID)
+VALUES (2, 'f101_0270');
+INSERT INTO FavoriteList (NguoiDungID, FoodID)
+VALUES (2, 'f101_0271');
+INSERT INTO FavoriteList (NguoiDungID, FoodID)
+VALUES (3, 'f101_0269');
+INSERT INTO FavoriteList (NguoiDungID, FoodID)
+VALUES (3, 'f101_0270');
+INSERT INTO FavoriteList (NguoiDungID, FoodID)
+VALUES (3, 'f101_0271');
