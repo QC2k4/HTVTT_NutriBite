@@ -4,6 +4,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const ageInput = document.getElementById("age");
   const successMsg = document.getElementById("successMsg");
 
+  // Get values from localStorage
+  const fullName = localStorage.getItem("userName") || "";
+  const nameParts = fullName.split(" ");
+  const firstName = nameParts.slice(0, -1).join(" ");
+  const lastName = nameParts.slice(-1).join(" ");
+
+  form.querySelector('input[name="first_name"]').value = firstName;
+  form.querySelector('input[name="last_name"]').value = lastName;
+  form.querySelector('input[name="email"]').value = localStorage.getItem("userEmail") || "";
+  form.querySelector('input[name="phone"]').value = localStorage.getItem("userPhone") || "";
+  form.querySelector('input[name="height"]').value = localStorage.getItem("userHeight") || "";
+  form.querySelector('input[name="weight"]').value = localStorage.getItem("userWeight") || "";
+  form.querySelector('input[name="age"]').value = localStorage.getItem("userAge") || "";
+
+  // Set gender
+  const gender = localStorage.getItem("userGender");
+  if (gender) {
+    const genderRadio = form.querySelector(`input[name="gender"][value="${gender}"]`);
+    if (genderRadio) genderRadio.checked = true;
+  }
+
+  // Set religion
+  const religion = localStorage.getItem("userReligion");
+  if (religion) {
+    const religionSelect = form.querySelector("select");
+    if (religionSelect) religionSelect.value = religion;
+  }
+
   birthdateInput.addEventListener("change", () => {
     const birthdate = new Date(birthdateInput.value);
     const today = new Date();
@@ -32,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
       Weight: parseFloat(form.querySelector('input[name="weight"]').value) || null,
       Age: parseInt(form.querySelector('input[name="age"]').value) || null,
       Religion: form.querySelector("select").value,
+      Gender: form.querySelector('input[name="gender"]:checked')?.value || null,
       currentEmail: currentEmail,
       currentPhone: currentPhone,
       Claim: localStorage.getItem("Claim")
