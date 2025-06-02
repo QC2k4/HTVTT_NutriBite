@@ -4,7 +4,7 @@ print("Connected successfully!")
 
 SQL_SERVER = {
     "server": "localhost",
-    "database": "NutriBite",
+    "database": "Food_System",
     "driver": "ODBC Driver 17 for SQL Server"
 }
 
