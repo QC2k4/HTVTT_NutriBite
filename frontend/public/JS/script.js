@@ -132,21 +132,21 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const fetchAndStoreUserInfo = () => {
     const username = localStorage.getItem("Claim");
-  
+
     if (!username) {
       console.warn("No username found");
       return;
     }
-  
+
     fetch("http://127.0.0.1:5000/user/get", {
       method: "POST",
       headers: {
-        "Content-Type": "application/json"
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({ Claim: username })
+      body: JSON.stringify({ Claim: username }),
     })
-      .then(res => res.json())
-      .then(data => {
+      .then((res) => res.json())
+      .then((data) => {
         if (data.success) {
           localStorage.setItem("userName", data.HoTen);
           localStorage.setItem("userAge", data.Tuoi);
@@ -157,7 +157,7 @@ document.addEventListener("DOMContentLoaded", function () {
           localStorage.setItem("userEmail", data.Email);
           localStorage.setItem("userReligion", data.TonGiao);
           localStorage.setItem("userGender", data.GioiTinh);
-  
+
           // 🔁 Do NOT call renderHeader() again
           // Instead: force full page refresh or instruct user to refresh, or call renderHeader() ONCE on page load
         } else {
@@ -165,50 +165,52 @@ document.addEventListener("DOMContentLoaded", function () {
         }
         renderHeader();
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Fetch error:", error);
       });
 
-      const renderFavoriteList = (favoriteFoods) => {
-        const favoriteListContainer = document.getElementById("favoriteListContainer");
-        if (!favoriteListContainer) return;
-      
-        favoriteListContainer.innerHTML = ""; // clear previous
-      
-        favoriteFoods.forEach(food => {
-          const foodItem = document.createElement("div");
-          foodItem.className = "food-item";
-      
-          foodItem.innerHTML = `
+    const renderFavoriteList = (favoriteFoods) => {
+      const favoriteListContainer = document.getElementById(
+        "favoriteListContainer"
+      );
+      if (!favoriteListContainer) return;
+
+      favoriteListContainer.innerHTML = ""; // clear previous
+
+      favoriteFoods.forEach((food) => {
+        const foodItem = document.createElement("div");
+        foodItem.className = "food-item";
+
+        foodItem.innerHTML = `
             <img src="${food.ImageURL}" alt="${food.Title}">
             <div class="food-info">
               <div class="food-name">${food.Title}</div>
               <div class="food-calories">${food.Calories} calories</div>
             </div>
           `;
-      
-          favoriteListContainer.appendChild(foodItem);
-        });
-      };
-      
-      fetch("http://127.0.0.1:5000/food/get-favorite-list", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ Claim: username })
+
+        favoriteListContainer.appendChild(foodItem);
+      });
+    };
+
+    fetch("http://127.0.0.1:5000/food/get-favorite-list", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ Claim: username }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.FavoriteFoods) {
+          renderFavoriteList(data.FavoriteFoods);
+        } else {
+          console.warn("No favorite foods found or error:", data);
+        }
       })
-        .then(res => res.json())
-        .then(data => {
-          if (data.FavoriteFoods) {
-            renderFavoriteList(data.FavoriteFoods);
-          } else {
-            console.warn("No favorite foods found or error:", data);
-          }
-        })
-        .catch(error => {
-          console.error("Fetch error:", error);
-        });
+      .catch((error) => {
+        console.error("Fetch error:", error);
+      });
   };
 
   const setupProfileModal = () => {
@@ -271,6 +273,17 @@ document.addEventListener("DOMContentLoaded", function () {
     const computeBtn = document.querySelector(
       '.signin-btn[onclick="calculateBMI()"]'
     );
+
+    const getBMIPosition = (bmi) => {
+      if (bmi <= 10) return 0;
+      if (bmi <= 18.5) return ((bmi - 10) / (18.5 - 10)) * 15;
+      if (bmi <= 25) return 15 + ((bmi - 18.5) / (25 - 18.5)) * 25;
+      if (bmi <= 30) return 40 + ((bmi - 25) / (30 - 25)) * 20;
+      if (bmi <= 35) return 60 + ((bmi - 30) / (35 - 30)) * 15;
+      if (bmi <= 40) return 75 + ((bmi - 35) / (40 - 35)) * 25;
+      return 100;
+    };
+
     const clearBtn = document.querySelector('.clear-btn[onclick="clearBMI()"]');
 
     if (!heightInput || !weightInput || !bmiResult) return;
@@ -292,7 +305,7 @@ document.addEventListener("DOMContentLoaded", function () {
       bmiResult.value = bmi;
 
       if (bmiIndicator) {
-        let indicatorPosition = (bmi / 40) * 100;
+        let indicatorPosition = getBMIPosition(bmi);
         if (indicatorPosition > 100) indicatorPosition = 100;
         bmiIndicator.style.left = `${indicatorPosition}%`;
         bmiIndicator.style.display = "block";
