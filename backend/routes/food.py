@@ -43,7 +43,7 @@ def get_favorite_list():
             for food in foods
         ]
 
-        return jsonify({"FavoriteFoods": food_list}), 200
+        return jsonify({"success": True, "FavoriteFoods": food_list}), 200
 
     except Exception as e:
         db.session.rollback()
