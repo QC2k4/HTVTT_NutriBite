@@ -2,6 +2,7 @@ from flask import Flask
 from flask_cors import CORS
 from extensions import db
 from routes.user import user_bp  # Import the user blueprint
+from routes.food import food_bp
 import config
 
 def create_app():
@@ -11,7 +12,8 @@ def create_app():
     CORS(app)  # Enable cross-origin for development
 
     # Register blueprints
-    app.register_blueprint(user_bp, url_prefix='/user')  # Register user blueprint with '/user' prefix
+    app.register_blueprint(user_bp, url_prefix='/user')
+    app.register_blueprint(food_bp, url_prefix='/food')
 
     return app
 

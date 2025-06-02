@@ -104,20 +104,23 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <div class="profile-section">
               <h3>My Favorite List</h3>
-              <div class="food-item" onclick="window.location.href='item-info.html'">
-                <img src="img/ChickenPastaPrimavera.png" alt="Chicken Pasta">
-                <div class="food-info">
-                  <div class="food-name">Chicken Pasta Primavera</div>
-                  <div class="food-time">50 mins</div>
+              <div id="favoriteListContainer"></div>
+              <!--
+                <div class="food-item" onclick="window.location.href='item-info.html'">
+                  <img src="img/ChickenPastaPrimavera.png" alt="Chicken Pasta">
+                  <div class="food-info">
+                    <div class="food-name">Chicken Pasta Primavera</div>
+                    <div class="food-time">50 mins</div>
+                  </div>
                 </div>
-              </div>
-              <div class="food-item">
-                <img src="img/Grilled Salmon Bruschetta with Avocado.png" alt="Grilled Salmon">
-                <div class="food-info">
-                  <div class="food-name">Grilled Salmon Bruschetta with Avocado</div>
-                  <div class="food-time">50 mins</div>
+                <div class="food-item">
+                  <img src="img/Grilled Salmon Bruschetta with Avocado.png" alt="Grilled Salmon">
+                  <div class="food-info">
+                    <div class="food-name">Grilled Salmon Bruschetta with Avocado</div>
+                    <div class="food-time">50 mins</div>
+                  </div>
                 </div>
-              </div>
+              -->
             </div>
             <button class="btn btn-outline" style="width: 100%; margin-bottom: 15px;" onclick="logout()" >Log out</button>
           </div>
@@ -165,6 +168,47 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch(error => {
         console.error("Fetch error:", error);
       });
+
+      const renderFavoriteList = (favoriteFoods) => {
+        const favoriteListContainer = document.getElementById("favoriteListContainer");
+        if (!favoriteListContainer) return;
+      
+        favoriteListContainer.innerHTML = ""; // clear previous
+      
+        favoriteFoods.forEach(food => {
+          const foodItem = document.createElement("div");
+          foodItem.className = "food-item";
+      
+          foodItem.innerHTML = `
+            <img src="${food.ImageURL}" alt="${food.Title}">
+            <div class="food-info">
+              <div class="food-name">${food.Title}</div>
+              <div class="food-calories">${food.Calories} calories</div>
+            </div>
+          `;
+      
+          favoriteListContainer.appendChild(foodItem);
+        });
+      };
+      
+      fetch("http://127.0.0.1:5000/food/get-favorite-list", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ Claim: username })
+      })
+        .then(res => res.json())
+        .then(data => {
+          if (data.FavoriteFoods) {
+            renderFavoriteList(data.FavoriteFoods);
+          } else {
+            console.warn("No favorite foods found or error:", data);
+          }
+        })
+        .catch(error => {
+          console.error("Fetch error:", error);
+        });
   };
 
   const setupProfileModal = () => {
