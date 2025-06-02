@@ -1,7 +1,7 @@
 from flask import Blueprint, request, jsonify, flash, current_app
 from flask_cors import cross_origin
 from extensions import db
-from sqlalchemy import Table, select, insert, or_
+from sqlalchemy import Table, select, insert, or_, func
 from models import NguoiDung
 from models.FavoriteList import FavoriteList
 from models.Food import Food
@@ -44,6 +44,33 @@ def get_favorite_list():
         ]
 
         return jsonify({"FavoriteFoods": food_list}), 200
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"success": False, "message": str(e)}), 500
+    
+@food_bp.route('get-random-recommend', methods=['GET'])
+def get_random_recommend():
+    try:
+        random_foods = (
+            db.session.query(Food)
+            .filter(Food.ImageURL.startswith("http"))
+            .order_by(func.newid())
+            .limit(4)
+            .all()
+        )
+        
+        result = [
+            {
+                "FoodID": food.FoodID,
+                "Title": food.Title,
+                "Calories": food.Calories,
+                "ImageURL": food.ImageURL
+            }
+            for food in random_foods
+        ]
+
+        return jsonify({"success": True, "data": result}), 200
 
     except Exception as e:
         db.session.rollback()
