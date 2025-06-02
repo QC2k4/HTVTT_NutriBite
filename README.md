@@ -24,13 +24,13 @@
     ```
 - Install the required dependencies
     ````bash
-        pip install -r requirements.txt
+    pip install -r requirements.txt
     ````
 - Run the backend server
     ````bash
-        python app.py
+    python app.py
     ````
 -  To stop the server and deactivate the virtual environment, run
     ````bash
-        deactivate
+    deactivate
     ````
