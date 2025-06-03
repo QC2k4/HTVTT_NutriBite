@@ -92,7 +92,7 @@ function getFoodIDFromURL() {
   }  
 
   function renderFeedbackStars(stars) {
-   return Array.from({ length: 5 }, (_, i) => i < stars ? "★" : "☆").join("");
+   return Array.from({ length: 5 }, (_, i) => i < stars ? "<span>★</span>" : "<span>☆</span>").join("");
   }
 
   function getRelativeTime(isoDateStr) {
