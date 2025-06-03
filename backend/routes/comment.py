@@ -14,18 +14,26 @@ comment_bp = Blueprint('comment', __name__)
 @comment_bp.route("/by-food/<food_id>", methods=["GET"])
 def get_ratings_by_food(food_id):
     try:
-        ratings = DanhGia.query.filter_by(FoodID=food_id).order_by(DanhGia.ThoiGian.desc()).all()
+        results = (
+            db.session.query(DanhGia, NguoiDung)
+            .join(NguoiDung, DanhGia.NguoiDungID == NguoiDung.NguoiDungID)
+            .filter(DanhGia.FoodID == food_id)
+            .order_by(DanhGia.ThoiGian.desc())
+            .all()
+        )
 
-        result = [
-            {
-                "NguoiDungID": r.NguoiDungID,
-                "SoSao": r.SoSao,
-                "NhanXet": r.NhanXet,
-                "ThoiGian": r.ThoiGian.isoformat()
-            }
-            for r in ratings
-        ]
+        data = []
+        for danhgia, nguoidung in results:
+            data.append({
+                "NguoiDungID": danhgia.NguoiDungID,
+                "HoTen": nguoidung.HoTen,
+                "ImageAvatar": nguoidung.ImageAvatar,
+                "SoSao": danhgia.SoSao,
+                "NhanXet": danhgia.NhanXet,
+                "ThoiGian": danhgia.ThoiGian.isoformat()
+            })
 
-        return jsonify({"success": True, "data": result})
+        return jsonify({"success": True, "data": data}), 200
+
     except Exception as e:
         return jsonify({"success": False, "error": str(e)}), 500
