@@ -16,6 +16,12 @@ const renderFavoriteList = (favoriteFoods) => {
         </div>
         <button class="remove-btn" data-id="${food.FoodID}">Remove</button>
       `;
+
+      item.addEventListener('click', (e) => {
+        if (!e.target.classList.contains('remove-btn')) {
+          window.location.href = `item-info.html?id=${food.FoodID}`;
+        }
+      });
   
       container.appendChild(item);
     });

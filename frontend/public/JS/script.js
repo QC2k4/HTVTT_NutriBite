@@ -189,6 +189,10 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
           `;
 
+          foodItem.addEventListener("click", () => {
+            window.location.href = `item-info.html?id=${food.FoodID}`;
+          });
+
         favoriteListContainer.appendChild(foodItem);
       });
     };

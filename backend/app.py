@@ -3,6 +3,7 @@ from flask_cors import CORS
 from extensions import db
 from routes.user import user_bp  # Import the user blueprint
 from routes.food import food_bp
+from routes.comment import comment_bp
 import config
 
 def create_app():
@@ -14,6 +15,7 @@ def create_app():
     # Register blueprints
     app.register_blueprint(user_bp, url_prefix='/user')
     app.register_blueprint(food_bp, url_prefix='/food')
+    app.register_blueprint(comment_bp, url_prefix='/comment')
 
     return app
 

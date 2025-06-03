@@ -16,6 +16,10 @@ const renderRecommendations = async () => {
             <h2>${food.Title}</h2>
             <p>${food.Calories} Calories</p>
           `;
+
+          foodCard.addEventListener("click", () => {
+            window.location.href = `item-info.html?id=${food.FoodID}`;
+          });
   
           container.appendChild(foodCard);
         });
