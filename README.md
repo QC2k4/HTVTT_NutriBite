@@ -52,7 +52,7 @@
   python -m http.server 8000
 - Then, open your browser and visit:
    ````bash
-    http://localhost:8000/index.html
+    http://localhost:8000/frontend/index.html
     ````
  ### 2. 🌐 Using VSCode Live Server
 
