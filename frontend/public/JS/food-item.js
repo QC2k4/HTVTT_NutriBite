@@ -37,7 +37,7 @@ async function loadFoodDetails(foodID) {
     const caloriesElem = document.querySelector(".calories-value");
     caloriesElem.textContent = food.Calories ?? "-";
 
-    const descriptionSection = document.getElementById("description-section");
+    // const descriptionSection = document.getElementById("description-section");
 
     // if (descriptionSection) {
     //   descriptionSection.innerHTML = `
