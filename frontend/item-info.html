@@ -1,202 +1,344 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
+  <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Food Description</title>
-    <link href='https://fonts.googleapis.com/css?family=Angkor' rel='stylesheet'>
-    <link rel="stylesheet" href="public/CSS/styles.css">
-</head>
-<body>
-  <div class="logo-section">
-    <img src="img/logo.png" alt="" class="logo-img">
-    <button class="return" onclick="window.location.href='index-after-signin.html'">Return</button>
-</div>
+    <link
+      href="https://fonts.googleapis.com/css?family=Angkor"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="public/CSS/styles.css" />
+  </head>
+  <body>
+    <div class="logo-section">
+      <img src="img/logo.png" alt="" class="logo-img" />
+      <button
+        class="return"
+        onclick="window.location.href='index-after-signin.html'"
+      >
+        Return
+      </button>
+    </div>
 
-      <div class="container-recipe">
-        <div class="recipe-header">
-          <h1 class="recipe-title">Chicken Pasta Primavera</h1>
-          <img src="img/ChickenPastaPrimavera.png" alt="Chicken Pasta Primavera" class="recipe-image">
-        </div>
-        
-        <section class="recipe-section" id="description-section">
-          <h2 class="section-title">Description</h2>
-          <p>Chicken Pasta Primavera is a delicious and colorful dish featuring tender chicken, fresh vegetables, and pasta in a light, flavorful sauce. It's a great way to enjoy a balanced meal with lean protein, healthy carbs, and plenty of nutrients from the veggies.</p>
-          <p>This dish is perfect for weeknight dinners when you want something healthy but don't want to spend hours in the kitchen. The combination of colorful vegetables makes it as visually appealing as it is delicious.</p>
-        </section>
-        
-        <section class="recipe-section">
-          <h2 class="section-title">Ingredients</h2>
-          <ul class="ingredients-list">
-            <li>2 boneless, skinless chicken breasts, cut into bite-sized pieces</li>
-            <li>12 oz pasta (penne or fettuccine)</li>
-            <li>2 tbsp olive oil</li>
-            <li>3 cloves garlic, minced</li>
-            <li>1 small onion, diced</li>
-            <li>1 red bell pepper, sliced</li>
-            <li>1 yellow bell pepper, sliced</li>
-            <li>1 zucchini, sliced</li>
-            <li>1 cup cherry tomatoes, halved</li>
-            <li>1/2 cup chicken broth</li>
-            <li>1/2 cup heavy cream</li>
-            <li>1/4 cup grated Parmesan cheese</li>
-            <li>1 tsp dried Italian seasoning</li>
-            <li>Salt and pepper to taste</li>
-            <li>Fresh basil for garnish</li>
-          </ul>
-        </section>
-        
-        <section class="recipe-section">
-          <h2 class="section-title">Instructions</h2>
-          <ol class="instructions-list">
-            <li>Cook pasta according to package instructions until al dente. Drain and set aside, reserving 1/2 cup of pasta water.</li>
-            <li>Heat olive oil in a large skillet over medium-high heat. Add chicken pieces and cook until golden brown and cooked through, about 5-6 minutes. Remove from skillet and set aside.</li>
-            <li>In the same skillet, add garlic and onion. Sauté for 2 minutes until fragrant.</li>
-            <li>Add bell peppers, zucchini, and cherry tomatoes. Cook for 4-5 minutes until vegetables are tender-crisp.</li>
-            <li>Pour in chicken broth and bring to a simmer, scraping up any browned bits from the bottom of the pan.</li>
-            <li>Reduce heat to medium-low and stir in heavy cream, Parmesan cheese, and Italian seasoning. Season with salt and pepper to taste.</li>
-            <li>Return chicken to the skillet and add the cooked pasta. Toss everything together, adding reserved pasta water as needed to create a light sauce that coats the pasta.</li>
-            <li>Garnish with fresh basil and additional Parmesan cheese before serving.</li>
-          </ol>
-        </section>
-        
-        <section class="recipe-section">
-          <h2 class="section-title">Nutritional Values</h2>
-          <p>Per serving (1/4 of recipe):</p>
-          <div class="nutrition-grid">
-            <div class="nutrition-item">
-              <div class="nutrition-value calories-value">450</div>
-              <div class="nutrition-label">Calories</div>
-            </div>
-            <div class="nutrition-item">
-              <div class="nutrition-value">35g</div>
-              <div class="nutrition-label">Protein</div>
-            </div>
-            <div class="nutrition-item">
-              <div class="nutrition-value">45g</div>
-              <div class="nutrition-label">Carbs</div>
-            </div>
-            <div class="nutrition-item">
-              <div class="nutrition-value">15g</div>
-              <div class="nutrition-label">Fat</div>
-            </div>
-            <div class="nutrition-item">
-              <div class="nutrition-value">6g</div>
-              <div class="nutrition-label">Fiber</div>
-            </div>
-            <div class="nutrition-item">
-              <div class="nutrition-value">8g</div>
-              <div class="nutrition-label">Sugar</div>
-            </div>
-          </div>
-        </section>
-        
-        <section class="recipe-section">
-            <h2 class="section-title">User Feedback</h2>
-            
-            <div class="user-feedbacks">
-              <div class="feedback-item">
-                <div class="feedback-header">
-                  <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="User" class="feedback-avatar">
-                  <div class="feedback-user">
-                    <h4>Sarah Johnson</h4>
-                    <div class="feedback-rating">
-                      <span>★</span><span>★</span><span>★</span><span>★</span><span>★</span>
-                    </div>
-                  </div>
-                  <span class="feedback-date">2 days ago</span>
-                </div>
-                <p class="feedback-content">This recipe was amazing! The chicken was perfectly cooked and the vegetables were so fresh. Will definitely make it again.</p>
-              </div>
-              
-              <div class="feedback-item">
-                <div class="feedback-header">
-                  <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="User" class="feedback-avatar">
-                  <div class="feedback-user">
-                    <h4>Michael Chen</h4>
-                    <div class="feedback-rating">
-                      <span>★</span><span>★</span><span>★</span><span>★</span><span>☆</span>
-                    </div>
-                  </div>
-                  <span class="feedback-date">1 week ago</span>
-                </div>
-                <p class="feedback-content">Great recipe! I added some mushrooms and it turned out even better. The only thing I would change is to use less cream next time.</p>
-              </div>
-              
-              <div class="feedback-item">
-                <div class="feedback-header">
-                  <img src="https://randomuser.me/api/portraits/women/65.jpg" alt="User" class="feedback-avatar">
-                  <div class="feedback-user">
-                    <h4>Emily Rodriguez</h4>
-                    <div class="feedback-rating">
-                      <span>★</span><span>★</span><span>★</span><span>☆</span><span>☆</span>
-                    </div>
-                  </div>
-                  <span class="feedback-date">2 weeks ago</span>
-                </div>
-                <p class="feedback-content">Easy to make and delicious. My kids loved it too! I used whole wheat pasta to make it healthier.</p>
-              </div>
-            </div>
-            
-            <div class="feedback-form-container" id="feedbackForm" style="display: none;">
-              <h3>Share Your Feedback</h3>
-              <form class="feedback-form">
-                <div class="rating">
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                  <span>★</span>
-                </div>
-                <textarea placeholder="Share your experience with this recipe..." required></textarea>
-                <div class="form-buttons">
-                  <button type="submit" class="submit-btn">Submit Feedback</button>
-                  <button type="button" class="cancel-btn" id="cancelFeedback">Cancel</button>
-                </div>
-              </form>
-            </div>
-
-            <div class="feedback-actions">
-              <button class="action-btn favorite-btn" id="addToFavorite">
-                <span>❤️</span> Add to favorite
-              </button>
-              <button class="action-btn feedback-btn" id="giveFeedback">
-                <span>✏️</span> Give feedback
-              </button>
-            </div>
-          </section>
-        
-        <section class="recipe-section">
-          <h2 class="section-title">Similar Meals</h2>
-          <div class="similar-meals">
-            <div class="meal-card">
-              <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Creamy Garlic Parmesan Pasta">
-              <div class="meal-card-content">
-                <h3>Creamy Garlic Parmesan Pasta</h3>
-                <p>A rich and creamy pasta dish with garlic and Parmesan cheese.</p>
-              </div>
-            </div>
-            <div class="meal-card">
-              <img src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Vegetable Stir Fry">
-              <div class="meal-card-content">
-                <h3>Vegetable Stir Fry</h3>
-                <p>Colorful vegetables stir-fried with a light sauce, served over rice.</p>
-              </div>
-            </div>
-            <div class="meal-card">
-              <img src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Lemon Herb Chicken">
-              <div class="meal-card-content">
-                <h3>Lemon Herb Chicken</h3>
-                <p>Juicy chicken breasts marinated with lemon and fresh herbs.</p>
-              </div>
-            </div>
-          </div>
-        </section>
+    <div class="container-recipe">
+      <div class="recipe-header">
+        <h1 class="recipe-title">Chicken Pasta Primavera</h1>
+        <img
+          src="img/ChickenPastaPrimavera.png"
+          alt="Chicken Pasta Primavera"
+          class="recipe-image"
+        />
       </div>
 
-   <footer id="footer"></footer>
+      <section class="recipe-section" id="description-section">
+        <h2 class="section-title">Description</h2>
+        <p>
+          Chicken Pasta Primavera is a delicious and colorful dish featuring
+          tender chicken, fresh vegetables, and pasta in a light, flavorful
+          sauce. It's a great way to enjoy a balanced meal with lean protein,
+          healthy carbs, and plenty of nutrients from the veggies.
+        </p>
+        <p>
+          This dish is perfect for weeknight dinners when you want something
+          healthy but don't want to spend hours in the kitchen. The combination
+          of colorful vegetables makes it as visually appealing as it is
+          delicious.
+        </p>
+      </section>
 
-   <script src="public/JS/food-item.js"></script>
-  <script src="public/JS/script.js"></script>
-</body>
+      <section class="recipe-section">
+        <h2 class="section-title">Ingredients</h2>
+        <ul class="ingredients-list">
+          <li>
+            2 boneless, skinless chicken breasts, cut into bite-sized pieces
+          </li>
+          <li>12 oz pasta (penne or fettuccine)</li>
+          <li>2 tbsp olive oil</li>
+          <li>3 cloves garlic, minced</li>
+          <li>1 small onion, diced</li>
+          <li>1 red bell pepper, sliced</li>
+          <li>1 yellow bell pepper, sliced</li>
+          <li>1 zucchini, sliced</li>
+          <li>1 cup cherry tomatoes, halved</li>
+          <li>1/2 cup chicken broth</li>
+          <li>1/2 cup heavy cream</li>
+          <li>1/4 cup grated Parmesan cheese</li>
+          <li>1 tsp dried Italian seasoning</li>
+          <li>Salt and pepper to taste</li>
+          <li>Fresh basil for garnish</li>
+        </ul>
+      </section>
+
+      <section class="recipe-section">
+        <h2 class="section-title">Instructions</h2>
+        <ol class="instructions-list">
+          <li>
+            Cook pasta according to package instructions until al dente. Drain
+            and set aside, reserving 1/2 cup of pasta water.
+          </li>
+          <li>
+            Heat olive oil in a large skillet over medium-high heat. Add chicken
+            pieces and cook until golden brown and cooked through, about 5-6
+            minutes. Remove from skillet and set aside.
+          </li>
+          <li>
+            In the same skillet, add garlic and onion. Sauté for 2 minutes until
+            fragrant.
+          </li>
+          <li>
+            Add bell peppers, zucchini, and cherry tomatoes. Cook for 4-5
+            minutes until vegetables are tender-crisp.
+          </li>
+          <li>
+            Pour in chicken broth and bring to a simmer, scraping up any browned
+            bits from the bottom of the pan.
+          </li>
+          <li>
+            Reduce heat to medium-low and stir in heavy cream, Parmesan cheese,
+            and Italian seasoning. Season with salt and pepper to taste.
+          </li>
+          <li>
+            Return chicken to the skillet and add the cooked pasta. Toss
+            everything together, adding reserved pasta water as needed to create
+            a light sauce that coats the pasta.
+          </li>
+          <li>
+            Garnish with fresh basil and additional Parmesan cheese before
+            serving.
+          </li>
+        </ol>
+      </section>
+
+      <section class="recipe-section">
+        <h2 class="section-title">Nutritional Values</h2>
+        <p>Per serving (1/4 of recipe):</p>
+        <div class="nutrition-grid">
+          <div class="nutrition-item">
+            <div class="nutrition-value calories-value">450</div>
+            <div class="nutrition-label">Calories</div>
+          </div>
+          <div class="nutrition-item">
+            <div class="nutrition-value">35g</div>
+            <div class="nutrition-label">Protein</div>
+          </div>
+          <div class="nutrition-item">
+            <div class="nutrition-value">45g</div>
+            <div class="nutrition-label">Carbs</div>
+          </div>
+          <div class="nutrition-item">
+            <div class="nutrition-value">15g</div>
+            <div class="nutrition-label">Fat</div>
+          </div>
+          <div class="nutrition-item">
+            <div class="nutrition-value">6g</div>
+            <div class="nutrition-label">Fiber</div>
+          </div>
+          <div class="nutrition-item">
+            <div class="nutrition-value">8g</div>
+            <div class="nutrition-label">Sugar</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="recipe-section">
+        <h2 class="section-title">User Feedback</h2>
+
+        <div class="user-feedbacks" id="feedbackContainer">
+          <div class="feedback-item">
+            <div class="feedback-header">
+              <img
+                src="https://randomuser.me/api/portraits/women/43.jpg"
+                alt="User"
+                class="feedback-avatar"
+              />
+              <div class="feedback-user">
+                <h4>Sarah Johnson</h4>
+                <div class="feedback-rating">
+                  <span>★</span><span>★</span><span>★</span><span>★</span
+                  ><span>★</span>
+                </div>
+              </div>
+              <span class="feedback-date">2 days ago</span>
+            </div>
+            <p class="feedback-content">
+              This recipe was amazing! The chicken was perfectly cooked and the
+              vegetables were so fresh. Will definitely make it again.
+            </p>
+          </div>
+
+          <div class="feedback-item">
+            <div class="feedback-header">
+              <img
+                src="https://randomuser.me/api/portraits/women/43.jpg"
+                alt="User"
+                class="feedback-avatar"
+              />
+              <div class="feedback-user">
+                <h4>Sarah Johnson</h4>
+                <div class="feedback-rating">
+                  <span>★</span><span>★</span><span>★</span><span>★</span
+                  ><span>★</span>
+                </div>
+              </div>
+              <span class="feedback-date">2 days ago</span>
+            </div>
+            <p class="feedback-content">
+              This recipe was amazing! The chicken was perfectly cooked and the
+              vegetables were so fresh. Will definitely make it again.
+            </p>
+          </div>
+
+          <div class="feedback-item">
+            <div class="feedback-header">
+              <img
+                src="https://randomuser.me/api/portraits/women/43.jpg"
+                alt="User"
+                class="feedback-avatar"
+              />
+              <div class="feedback-user">
+                <h4>Sarah Johnson</h4>
+                <div class="feedback-rating">
+                  <span>★</span><span>★</span><span>★</span><span>★</span
+                  ><span>★</span>
+                </div>
+              </div>
+              <span class="feedback-date">2 days ago</span>
+            </div>
+            <p class="feedback-content">
+              This recipe was amazing! The chicken was perfectly cooked and the
+              vegetables were so fresh. Will definitely make it again.
+            </p>
+          </div>
+
+          <div class="feedback-item">
+            <div class="feedback-header">
+              <img
+                src="https://randomuser.me/api/portraits/men/32.jpg"
+                alt="User"
+                class="feedback-avatar"
+              />
+              <div class="feedback-user">
+                <h4>Michael Chen</h4>
+                <div class="feedback-rating">
+                  <span>★</span><span>★</span><span>★</span><span>★</span
+                  ><span>☆</span>
+                </div>
+              </div>
+              <span class="feedback-date">1 week ago</span>
+            </div>
+            <p class="feedback-content">
+              Great recipe! I added some mushrooms and it turned out even
+              better. The only thing I would change is to use less cream next
+              time.
+            </p>
+          </div>
+
+          <div class="feedback-item">
+            <div class="feedback-header">
+              <img
+                src="https://randomuser.me/api/portraits/women/65.jpg"
+                alt="User"
+                class="feedback-avatar"
+              />
+              <div class="feedback-user">
+                <h4>Emily Rodriguez</h4>
+                <div class="feedback-rating">
+                  <span>★</span><span>★</span><span>★</span><span>☆</span
+                  ><span>☆</span>
+                </div>
+              </div>
+              <span class="feedback-date">2 weeks ago</span>
+            </div>
+            <p class="feedback-content">
+              Easy to make and delicious. My kids loved it too! I used whole
+              wheat pasta to make it healthier.
+            </p>
+          </div>
+        </div>
+        <div class="pagination" id="paginationControls"></div>
+        <div
+          class="feedback-form-container"
+          id="feedbackForm"
+          style="display: none"
+        >
+          <h3>Share Your Feedback</h3>
+          <form class="feedback-form">
+            <div class="rating">
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+              <span>★</span>
+            </div>
+            <textarea
+              placeholder="Share your experience with this recipe..."
+              required
+            ></textarea>
+            <div class="form-buttons">
+              <button type="submit" class="submit-btn">Submit Feedback</button>
+              <button type="button" class="cancel-btn" id="cancelFeedback">
+                Cancel
+              </button>
+            </div>
+          </form>
+        </div>
+
+        <div class="feedback-actions">
+          <button class="action-btn favorite-btn" id="addToFavorite">
+            <span>❤️</span> Add to favorite
+          </button>
+          <button class="action-btn feedback-btn" id="giveFeedback">
+            <span>✏️</span> Give feedback
+          </button>
+        </div>
+      </section>
+
+      <section class="recipe-section">
+        <h2 class="section-title">Similar Meals</h2>
+        <div class="similar-meals">
+          <div class="meal-card">
+            <img
+              src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Creamy Garlic Parmesan Pasta"
+            />
+            <div class="meal-card-content">
+              <h3>Creamy Garlic Parmesan Pasta</h3>
+              <p>
+                A rich and creamy pasta dish with garlic and Parmesan cheese.
+              </p>
+            </div>
+          </div>
+          <div class="meal-card">
+            <img
+              src="https://images.unsplash.com/photo-1547592180-85f173990554?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Vegetable Stir Fry"
+            />
+            <div class="meal-card-content">
+              <h3>Vegetable Stir Fry</h3>
+              <p>
+                Colorful vegetables stir-fried with a light sauce, served over
+                rice.
+              </p>
+            </div>
+          </div>
+          <div class="meal-card">
+            <img
+              src="https://images.unsplash.com/photo-1504674900247-0877df9cc836?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
+              alt="Lemon Herb Chicken"
+            />
+            <div class="meal-card-content">
+              <h3>Lemon Herb Chicken</h3>
+              <p>Juicy chicken breasts marinated with lemon and fresh herbs.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer id="footer"></footer>
+
+    <script src="public/JS/food-item.js"></script>
+    <script src="public/JS/script.js"></script>
+  </body>
 </html>
