@@ -977,9 +977,9 @@ input[readonly] {
 }
 
 .recipe-title {
-  font-size: 2.5rem;
+  font-size: 3rem;
   color: #a58bf5;
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .recipe-image {
@@ -1289,6 +1289,12 @@ input[readonly] {
   text-align: center;
   font-weight: bold;
 }
+
+.favorite-section h2 {
+  color: #333;
+  font-size: 30px;
+}
+
 
 .favorite-item {
   display: flex;
