@@ -126,3 +126,37 @@ def get_food_information_by_id(food_id):
         })
     except Exception as e:
         return jsonify({"success": False, "message": str(e)}), 500
+    
+@food_bp.route('search', methods=['POST'])
+def search_food_by_title():
+    data = request.get_json()
+    keyword = data.get('keyword', '')
+
+    try:
+        foods = db.session.query(Food).filter(Food.Title.ilike(f'%{keyword}%')).all()
+
+        if not foods:
+            return jsonify({'error': 'No food found'}), 404
+
+        def split_instructions(instructions):
+            steps = re.split(r'\s*\d+\.\s*', instructions.strip())
+            return [step.strip() for step in steps if step.strip()]
+
+        result = [
+            {
+                'FoodID': food.FoodID,
+                'Title': food.Title,
+                'Calories': food.Calories,
+                'Instructions': split_instructions(food.Instructions),
+                'ImageURL': food.ImageURL,
+                'SourceURL': food.SourceURL,
+                'Partition': food.Partition,
+                'Ingredients': [ing.Ingredient for ing in food.ingredients]
+            }
+            for food in foods
+        ]
+
+        return jsonify({'success': True, 'data': result}), 200
+
+    except Exception as e:
+        return jsonify({'success': False, 'message': str(e)}), 500
