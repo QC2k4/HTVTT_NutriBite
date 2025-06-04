@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify, flash, current_app
+from flask import Blueprint, request, jsonify, flash, current_app, session
 from flask_cors import cross_origin
 from extensions import db
 from sqlalchemy import Table, select, insert, or_, func
@@ -133,30 +133,36 @@ def search_food_by_title():
     keyword = data.get('keyword', '')
 
     try:
-        foods = db.session.query(Food).filter(Food.Title.ilike(f'%{keyword}%')).all()
+        foods = db.session.query(Food).filter(Food.Title.ilike(f'%{keyword}%')).filter(Food.ImageURL.startswith("http")).all()
 
         if not foods:
             return jsonify({'error': 'No food found'}), 404
 
-        def split_instructions(instructions):
-            steps = re.split(r'\s*\d+\.\s*', instructions.strip())
-            return [step.strip() for step in steps if step.strip()]
-
-        result = [
+        session['last_search_results'] = [
             {
                 'FoodID': food.FoodID,
                 'Title': food.Title,
                 'Calories': food.Calories,
-                'Instructions': split_instructions(food.Instructions),
-                'ImageURL': food.ImageURL,
-                'SourceURL': food.SourceURL,
-                'Partition': food.Partition,
-                'Ingredients': [ing.Ingredient for ing in food.ingredients]
+                'ImageURL': food.ImageURL
             }
             for food in foods
         ]
+        session['last_search_keyword'] = keyword
 
-        return jsonify({'success': True, 'data': result}), 200
+        return jsonify({'success': True }), 200
 
     except Exception as e:
         return jsonify({'success': False, 'message': str(e)}), 500
+    
+@food_bp.route('/search_list')
+def search_list():
+    try:
+        results = session.get('last_search_results')
+        keyword = session.get('last_search_keyword', '')
+
+        if results is None:
+            return jsonify({'success': False, 'message': 'No search results found'}), 404
+        
+        return jsonify({'success': True, 'keyword': keyword, 'data': results}), 200
+    except Exception as e:
+        return jsonify({'success: False', str(e)}), 500
