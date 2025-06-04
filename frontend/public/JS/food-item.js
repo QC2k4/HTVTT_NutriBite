@@ -39,13 +39,13 @@ async function loadFoodDetails(foodID) {
 
     const descriptionSection = document.getElementById("description-section");
 
-    if (descriptionSection) {
-      descriptionSection.innerHTML = `
-            <h2 class="section-title">Description</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        `;
-    }
+    // if (descriptionSection) {
+    //   descriptionSection.innerHTML = `
+    //         <h2 class="section-title">Description</h2>
+    //         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+    //         <p>Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    //     `;
+    // }
   } catch (error) {
     console.error("Error loading food details:", error);
     alert("Failed to load food details.");
