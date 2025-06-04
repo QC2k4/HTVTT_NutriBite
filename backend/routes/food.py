@@ -50,7 +50,7 @@ def get_favorite_list():
         db.session.rollback()
         return jsonify({"success": False, "message": str(e)}), 500
     
-@food_bp.route('get-all-appropriate', methods=['GET'])
+@food_bp.route('get-all-food', methods=['GET'])
 def get_all_appropriate():
     try:
         random_foods = (
@@ -63,6 +63,9 @@ def get_all_appropriate():
         result = [
             {
                 "FoodID": food.FoodID,
+                "Title": food.Title,
+                "Calories": food.Calories,
+                "ImageUrl": food.ImageURL
             }
             for food in random_foods
         ]
@@ -100,7 +103,7 @@ def get_random_recommend():
         db.session.rollback()
         return jsonify({"success": False, "message": str(e)}), 500
 
-@food_bp.route('<string:food_id>', methods=['GET'])
+@food_bp.route('id/<string:food_id>', methods=['GET'])
 def get_food_information_by_id(food_id):
     def split_instructions(instructions):
         steps = re.split(r'\s*\d+\.\s*', instructions.strip())

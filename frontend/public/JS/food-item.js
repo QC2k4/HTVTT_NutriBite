@@ -5,7 +5,7 @@ function getFoodIDFromURL() {
   
   async function loadFoodDetails(foodID) {
     try {
-        const response = await fetch(`http://localhost:5000/food/${foodID}`);
+        const response = await fetch(`http://localhost:5000/food/id/${foodID}`);
         if (!response.ok) throw new Error('Food not found');
         const food = await response.json();
     
