@@ -162,7 +162,7 @@ nav a {
 
 .search-box {
   display: block;
-  padding: 12px 45px 12px 20px; 
+  padding: 12px 45px 12px 20px;
   width: 100%;
   border: 1px solid #ccc;
   border-radius: 20px;
@@ -267,11 +267,11 @@ nav a {
   .about-content {
     flex-direction: column;
   }
-  
+
   .welcome-title {
     font-size: 2rem;
   }
-  
+
   .about-image {
     order: -1;
     margin-bottom: 30px;
@@ -279,7 +279,7 @@ nav a {
   .welcome-title {
     font-size: 1.8rem;
   }
-  
+
   .about-text p {
     font-size: 1rem;
   }
@@ -707,7 +707,7 @@ input[readonly] {
   left: -15px;
   font-size: 12px;
   font-weight: bold;
-  color: #333
+  color: #333;
 }
 
 .bmi-indicator {
@@ -1322,8 +1322,8 @@ input[readonly] {
 .favorite-section h2 {
   color: #333;
   font-size: 30px;
+  font-weight: bold;
 }
-
 
 .favorite-item {
   display: flex;
