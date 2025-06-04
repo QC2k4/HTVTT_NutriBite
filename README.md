@@ -77,7 +77,7 @@ SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc:{YOUR_SERVER_NAME}/{YOUR_DATABASE_NAME}?
   ```
 - Then, open your browser and visit:
   ```bash
-   http://localhost:8000/frontend/index.html
+   http://localhost:8000/index.html
   ```
 
 ### 🌐 Using VSCode Live Server
@@ -86,13 +86,11 @@ SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc:{YOUR_SERVER_NAME}/{YOUR_DATABASE_NAME}?
 - 💡 VSCode will automatically open a browser tab with the URL:
   ```bash
   http://127.0.0.1:5500/frontend/index.html
-  > ⚠️ **Important:** Replace `127.0.0.1` with `localhost` in the browser URL to correctly access the page with the proper path.
   ```
+  > ⚠️ **Important:** Replace `127.0.0.1` with `localhost` in the browser URL to correctly access the page with the proper path.
 
 ✅ Final URL should be:
 
 ```bash
 http://localhost:5500/frontend/index.html
 ```
-
----
