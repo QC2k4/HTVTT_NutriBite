@@ -7,7 +7,18 @@
   3. Run both of the following SQL files in order:
      - `CSDL.sql`
      - `Full_AddDatabase.sql`
+After importing the database, update the connection settings in your backend configuration file.
+- Open the file: "backend/config.py"
   
+- Locate the line containing the connection string, and update it to match your local SQL Server setup.
+
+Example:
+```python
+
+SQLALCHEMY_DATABASE_URI = 'mssql+pyodbc:{YOUR_SERVER_NAME}/{YOUR_DATABASE_NAME}?driver=ODBC+Driver+17+for+SQL+Server&trusted_connection=yes&encrypt=no&TrustServerCertificate=yes'
+```
+> 🛠️ Note:
+Replace YOUR_SERVER_NAME and YOUR_DATABASE_NAME with your actual SQL Server instance name and database name.
 ---
 ## 🚀 Backend Setup Guide
 - Open Terminal or Command Prompt.
@@ -41,6 +52,11 @@
     ````bash
     python app.py
     ````
+    
+-  To stop the server and deactivate the virtual environment, run
+    ````bash
+    deactivate
+    ````
     ---
   ## 🚀 Frontend Setup Guide
 - You can access the system using one of the following methods:
@@ -70,18 +86,3 @@
 ```
   ---
 
-
-
-
-
-
-
-
-
-  
--  To stop the server and deactivate the virtual environment, run
-    ````bash
-    deactivate
-    ````
-    
-    ---
