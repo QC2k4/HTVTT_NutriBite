@@ -52,115 +52,115 @@ async function loadFoodDetails(foodID) {
   }
 }
 
-function renderPagination(currentPage) {
-  const totalPages = Math.ceil(feedbackItems.length / 3);
-  const paginationContainer = document.getElementById("paginationControls");
+// function renderPagination(currentPage) {
+//   const totalPages = Math.ceil(feedbackItems.length / 3);
+//   const paginationContainer = document.getElementById("paginationControls");
 
-  paginationContainer.innerHTML = "";
+//   paginationContainer.innerHTML = "";
 
-  for (let i = 1; i <= totalPages; i++) {
-    const btn = document.createElement("button");
-    btn.textContent = i;
-    if (i === currentPage) btn.classList.add("active");
-    btn.addEventListener("click", () => showPage1(i));
-    paginationContainer.appendChild(btn);
-  }
-}
+//   for (let i = 1; i <= totalPages; i++) {
+//     const btn = document.createElement("button");
+//     btn.textContent = i;
+//     if (i === currentPage) btn.classList.add("active");
+//     btn.addEventListener("click", () => showPage1(i));
+//     paginationContainer.appendChild(btn);
+//   }
+// }
 
-function showPage1(page) {
-  const itemsPerPage = 3;
-  const start = (page - 1) * itemsPerPage;
-  const end = start + itemsPerPage;
+// function showPage1(page) {
+//   const itemsPerPage = 3;
+//   const start = (page - 1) * itemsPerPage;
+//   const end = start + itemsPerPage;
 
-  feedbackItems.forEach((item, index) => {
-    if (!item) return; // tránh lỗi null
-    item.classList.remove("active");
-    if (index >= start && index < end) {
-      item.classList.add("active");
-    }
-  });
+//   feedbackItems.forEach((item, index) => {
+//     if (!item) return; // tránh lỗi null
+//     item.classList.remove("active");
+//     if (index >= start && index < end) {
+//       item.classList.add("active");
+//     }
+//   });
 
-  renderPagination(page);
-}
+//   renderPagination(page);
+// }
 
-let feedbackItems = [];
+// let feedbackItems = [];
 
-async function loadFeedbacks(foodID) {
-  const container = document.querySelector(".user-feedbacks");
-  if (!container) return;
+// async function loadFeedbacks(foodID) {
+//   const container = document.querySelector(".user-feedbacks");
+//   if (!container) return;
 
-  try {
-    const res = await fetch(`http://localhost:5000/comment/by-food/${foodID}`);
-    const data = await res.json();
+//   try {
+//     const res = await fetch(`http://localhost:5000/comment/by-food/${foodID}`);
+//     const data = await res.json();
 
-    if (!data.success) throw new Error("Failed to load");
+//     if (!data.success) throw new Error("Failed to load");
 
-    container.innerHTML = "";
+//     container.innerHTML = "";
 
-    data.data.forEach((feedback) => {
-      const div = document.createElement("div");
-      div.className = "feedback-item";
+//     data.data.forEach((feedback) => {
+//       const div = document.createElement("div");
+//       div.className = "feedback-item";
 
-      div.innerHTML = `
-          <div class="feedback-header">
-            <img src="img/avatar.png" alt="User" class="feedback-avatar">
-            <div class="feedback-user">
-              <h4>${feedback.HoTen}</h4>
-              <div class="feedback-rating">${renderFeedbackStars(
-                feedback.SoSao
-              )}</div>
-            </div>
-            <span class="feedback-date">${getRelativeTime(
-              feedback.ThoiGian
-            )}</span>
-          </div>
-          <p class="feedback-content">${feedback.NhanXet}</p>
-        `;
+//       div.innerHTML = `
+//           <div class="feedback-header">
+//             <img src="img/avatar.png" alt="User" class="feedback-avatar">
+//             <div class="feedback-user">
+//               <h4>${feedback.HoTen}</h4>
+//               <div class="feedback-rating">${renderFeedbackStars(
+//                 feedback.SoSao
+//               )}</div>
+//             </div>
+//             <span class="feedback-date">${getRelativeTime(
+//               feedback.ThoiGian
+//             )}</span>
+//           </div>
+//           <p class="feedback-content">${feedback.NhanXet}</p>
+//         `;
 
-      container.appendChild(div);
-    });
+//       container.appendChild(div);
+//     });
 
-    feedbackItems = Array.from(container.querySelectorAll(".feedback-item"));
-    // console.log(feedbackItems);
+//     feedbackItems = Array.from(container.querySelectorAll(".feedback-item"));
+//     // console.log(feedbackItems);
 
-    // Chờ DOM cập nhật xong rồi mới gọi showPage
-    requestAnimationFrame(() => {
-      if (feedbackItems.length > 0) {
-        showPage1(1);
-      } else {
-        document.getElementById("paginationControls").innerHTML = "";
-      }
-    });
-  } catch (err) {
-    console.error("Error loading feedbacks:", err);
-    container.innerHTML = "<p>Unable to load feedbacks.</p>";
-  }
-}
+//     // Chờ DOM cập nhật xong rồi mới gọi showPage
+//     requestAnimationFrame(() => {
+//       if (feedbackItems.length > 0) {
+//         showPage1(1);
+//       } else {
+//         document.getElementById("paginationControls").innerHTML = "";
+//       }
+//     });
+//   } catch (err) {
+//     console.error("Error loading feedbacks:", err);
+//     container.innerHTML = "<p>Unable to load feedbacks.</p>";
+//   }
+// }
 
-function renderFeedbackStars(stars) {
-  return Array.from({ length: 5 }, (_, i) =>
-    i < stars ? "<span>★</span>" : "<span>☆</span>"
-  ).join("");
-}
+// function renderFeedbackStars(stars) {
+//   return Array.from({ length: 5 }, (_, i) =>
+//     i < stars ? "<span>★</span>" : "<span>☆</span>"
+//   ).join("");
+// }
 
-function getRelativeTime(isoDateStr) {
-  const now = new Date();
-  const past = new Date(isoDateStr);
-  const diffMs = now - past;
-  const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
+// function getRelativeTime(isoDateStr) {
+//   const now = new Date();
+//   const past = new Date(isoDateStr);
+//   const diffMs = now - past;
+//   const diffDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
 
-  if (diffDays < 1) return "Today";
-  if (diffDays === 1) return "1 day ago";
-  if (diffDays < 7) return `${diffDays} days ago`;
-  const diffWeeks = Math.floor(diffDays / 7);
-  return diffWeeks === 1 ? "1 week ago" : `${diffWeeks} weeks ago`;
-}
+//   if (diffDays < 1) return "Today";
+//   if (diffDays === 1) return "1 day ago";
+//   if (diffDays < 7) return `${diffDays} days ago`;
+//   const diffWeeks = Math.floor(diffDays / 7);
+//   return diffWeeks === 1 ? "1 week ago" : `${diffWeeks} weeks ago`;
+// }
 
 document.addEventListener("DOMContentLoaded", () => {
   const foodID = getFoodIDFromURL();
   if (foodID) {
     loadFoodDetails(foodID);
-    loadFeedbacks(foodID);
+    // loadFeedbacks(foodID);
   } else {
     alert("No food ID specified in URL.");
   }

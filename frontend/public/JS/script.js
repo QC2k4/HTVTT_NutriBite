@@ -394,111 +394,6 @@ document.addEventListener("DOMContentLoaded", function () {
     if (clearBtn) clearBtn.addEventListener("click", clearBMI);
   };
 
-  // ========== PHẦN FEEDBACK ==========
-  const setupFeedbackSystem = () => {
-    const stars = document.querySelectorAll(".rating span");
-    const addToFavoriteBtn = document.getElementById("addToFavorite");
-    const giveFeedbackBtn = document.getElementById("giveFeedback");
-    const feedbackForm = document.getElementById("feedbackForm");
-    const cancelFeedbackBtn = document.getElementById("cancelFeedback");
-    const feedbackFormElement = document.querySelector(".feedback-form");
-
-    // Rating system
-    if (stars.length > 0) {
-      stars.forEach((star, index) => {
-        star.addEventListener("click", () => {
-          stars.forEach((s, i) => {
-            s.style.color = i <= index ? "#FFC107" : "#ddd";
-          });
-        });
-      });
-    }
-
-    // Add to favorite
-    if (addToFavoriteBtn) {
-      let isFavorite = false;
-      addToFavoriteBtn.addEventListener("click", () => {
-        isFavorite = !isFavorite;
-        if (isFavorite) {
-          addToFavoriteBtn.innerHTML = "<span>❤️</span> Added to favorite";
-          addToFavoriteBtn.style.backgroundColor = "#f06292";
-          addToFavoriteBtn.style.color = "#880e4f";
-          alert("Recipe added to your favorites!");
-        } else {
-          addToFavoriteBtn.innerHTML = "<span>❤️</span> Add to favorite";
-          addToFavoriteBtn.style.backgroundColor = "#f8bbd0";
-          addToFavoriteBtn.style.color = "#c2185b";
-          alert("Recipe removed from your favorites!");
-        }
-      });
-    }
-
-    // Feedback form toggle
-    if (giveFeedbackBtn && feedbackForm && cancelFeedbackBtn) {
-      giveFeedbackBtn.addEventListener("click", () => {
-        feedbackForm.style.display = "block";
-        giveFeedbackBtn.style.display = "none";
-      });
-
-      cancelFeedbackBtn.addEventListener("click", () => {
-        feedbackForm.style.display = "none";
-        giveFeedbackBtn.style.display = "flex";
-        if (feedbackFormElement) feedbackFormElement.reset();
-        if (stars.length > 0) {
-          stars.forEach((star) => (star.style.color = "#ddd"));
-        }
-      });
-    }
-
-    // Form submission
-    if (feedbackFormElement) {
-      feedbackFormElement.addEventListener("submit", (e) => {
-        e.preventDefault();
-        const rating = document.querySelectorAll(
-          '.rating span[style="color: rgb(255, 193, 7);"]'
-        ).length;
-        const comment = e.target.querySelector("textarea")?.value;
-
-        if (!comment?.trim()) {
-          alert("Please enter your feedback before submitting.");
-          return;
-        }
-
-        alert(`Thank you for your ${rating}-star feedback!`);
-        if (feedbackForm) feedbackForm.style.display = "none";
-        if (giveFeedbackBtn) giveFeedbackBtn.style.display = "flex";
-        feedbackFormElement.reset();
-        if (stars.length > 0) {
-          stars.forEach((star) => (star.style.color = "#ddd"));
-        }
-
-        // Thêm feedback mới vào danh sách
-        const feedbacksContainer = document.querySelector(".user-feedbacks");
-        if (feedbacksContainer) {
-          const newFeedback = document.createElement("div");
-          newFeedback.className = "feedback-item";
-          newFeedback.innerHTML = `
-            <div class="feedback-header">
-              <img src="https://randomuser.me/api/portraits/women/12.jpg" alt="User" class="feedback-avatar">
-              <div class="feedback-user">
-                <h4>You</h4>
-                <div class="feedback-rating">
-                  ${
-                    "<span>★</span>".repeat(rating) +
-                    "<span>☆</span>".repeat(5 - rating)
-                  }
-                </div>
-              </div>
-              <span class="feedback-date">Just now</span>
-            </div>
-            <p class="feedback-content">${comment}</p>
-          `;
-          feedbacksContainer.prepend(newFeedback);
-        }
-      });
-    }
-  };
-
   // ========== PHẦN FOOD ITEM HOVER ==========
   const setupFoodItemHover = () => {
     const foodItems = document.querySelectorAll(".food-item");
@@ -705,7 +600,6 @@ document.addEventListener("DOMContentLoaded", function () {
   renderHeader();
   fetchAndStoreUserInfo();
   setupBMICalculator();
-  setupFeedbackSystem();
   setupFoodItemHover();
   setupTogglePassword();
   setupCreatePost();
