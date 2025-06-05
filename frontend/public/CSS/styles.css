@@ -1085,7 +1085,7 @@ input[readonly] {
 
 /* Feedback */
 .feedback-form textarea {
-  width: 100%;
+  width: 98%;
   padding: 1rem;
   border: 1px solid #ddd;
   border-radius: 8px;
@@ -1099,8 +1099,8 @@ input[readonly] {
 }
 
 .rating span {
-  color: #ffc107;
-  font-size: 1.5rem;
+  color: #ddd;
+  font-size: 2rem;
   cursor: pointer;
 }
 
