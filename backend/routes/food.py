@@ -5,6 +5,9 @@ from sqlalchemy import Table, select, insert, or_, func
 from models import NguoiDung
 from models.FavoriteList import FavoriteList
 from models.Food import Food, FoodIngredient
+from sklearn.metrics.pairwise import cosine_similarity
+from bert_loader import get_embeddings_and_df
+import numpy as np
 import logging
 import re
 
@@ -166,3 +169,34 @@ def search_list():
         return jsonify({'success': True, 'keyword': keyword, 'data': results}), 200
     except Exception as e:
         return jsonify({'success: False', str(e)}), 500
+    
+@food_bp.route('/recommend_by_calories', methods=['GET'])
+def recommend_by_calories():
+    try:
+        embeddings, df = get_embeddings_and_df()  # ✅ Fetch current memory values
+
+        if embeddings is None or df is None:
+            return jsonify({'error': 'BERT data not loaded'}), 500
+
+        target_calories = int(request.args.get('calories'))
+
+        # Filter recipes within ±50 calories
+        filtered_df = df[(df['Calories'] >= target_calories - 50) & (df['Calories'] <= target_calories + 50)]
+
+        if filtered_df.empty:
+            return jsonify({'message': 'No recipes found within this calorie range'}), 404
+
+        # Recalculate similarity using average embedding (centroid)
+        filtered_indices = filtered_df.index.tolist()
+        filtered_embeddings = embeddings[filtered_indices]
+
+        mean_vector = np.mean(filtered_embeddings, axis=0).reshape(1, -1)
+        similarities = cosine_similarity(mean_vector, filtered_embeddings)[0]
+
+        top_indices = similarities.argsort()[-5:][::-1]
+        recommended = filtered_df.iloc[top_indices]
+
+        return jsonify(recommended[['FoodID', 'Title', 'Calories']].to_dict(orient='records'))
+
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
