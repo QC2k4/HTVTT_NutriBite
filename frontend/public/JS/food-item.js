@@ -36,6 +36,7 @@ async function loadFoodDetails(foodID) {
     // Calories only update
     const caloriesElem = document.querySelector(".calories-value");
     caloriesElem.textContent = food.Calories ?? "-";
+    loadSimilarMeals(food.Calories, food.FoodID);
 
     // const descriptionSection = document.getElementById("description-section");
 
@@ -49,6 +50,43 @@ async function loadFoodDetails(foodID) {
   } catch (error) {
     console.error("Error loading food details:", error);
     alert("Failed to load food details.");
+  }
+}
+
+async function loadSimilarMeals(currentCalories, currentFoodID) {
+  try {
+    const response = await fetch(`http://localhost:5000/food/recommend_by_calories?calories=${currentCalories}`);
+    const data = await response.json();
+
+    const similarContainer = document.querySelector(".similar-meals");
+    similarContainer.innerHTML = ""; // clear default hardcoded meals
+
+    data.forEach((item) => {
+      if (item.FoodID === parseInt(currentFoodID)) return; // skip current food
+
+      const card = document.createElement("div");
+      card.className = "meal-card";
+
+      card.innerHTML = `
+        <img src="${item.ImageURL}" alt="${item.Title}" />
+        <div class="meal-card-content">
+          <h3>${item.Title}</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+          <p>${item.Calories} kcal</p>
+        </div>
+      `;
+
+      // Optional: click to go to that food's detail page
+      card.addEventListener("click", () => {
+        window.location.href = `item-info.html?id=${item.FoodID}`;
+      });
+
+      similarContainer.appendChild(card);
+    });
+  } catch (error) {
+    console.error("Error loading similar meals:", error);
+    const similarContainer = document.querySelector(".similar-meals");
+    similarContainer.innerHTML = "<p>Unable to load similar meals.</p>";
   }
 }
 

@@ -41,6 +41,7 @@ def load_bert_and_data():
             "FoodID": food.FoodID,
             "Title": food.Title or "",
             "Calories": food.Calories or 0,
+            "ImageURL": food.ImageURL or "",
             "Ingredients": ingredients,
             "Instructions": food.Instructions or ""
         })
