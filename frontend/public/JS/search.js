@@ -1,8 +1,10 @@
-document.getElementById('searchIcon').addEventListener('click', function () {
-    const keyword = document.getElementById('searchBox').value.trim();
-  
+document.querySelectorAll('.search-icon').forEach((icon, index) => {
+  icon.addEventListener('click', function () {
+    const box = document.querySelectorAll('.search-box')[index];
+    const keyword = box.value.trim();
+
     if (!keyword) return alert('Please enter a keyword.');
-  
+
     fetch('http://localhost:5000/food/search', {
       method: 'POST',
       headers: {
@@ -16,10 +18,11 @@ document.getElementById('searchIcon').addEventListener('click', function () {
         return response.json();
       })
       .then(data => {
-        localStorage.setItem('searchResults', JSON.stringify(data.data)); // Save results
-        window.location.href = 'search_list.html'; // Redirect to results page
+        localStorage.setItem('searchResults', JSON.stringify(data.data));
+        window.location.href = 'search_list.html';
       })
       .catch(err => {
         alert(err.message);
       });
   });
+});

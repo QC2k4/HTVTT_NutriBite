@@ -5,8 +5,8 @@ from sqlalchemy import Table, select, insert, or_, func
 from models import NguoiDung
 from models.FavoriteList import FavoriteList
 from models.Food import Food, FoodIngredient
-from sklearn.metrics.pairwise import cosine_similarity
-from bert_loader import get_embeddings_and_df
+from sklearn.metrics.pairwise import cosine_similarity # type: ignore
+from bert_loader import get_embeddings_and_df, load_bert_and_data, recommend_with_calorie_filter
 import numpy as np
 import logging
 import re
@@ -204,3 +204,42 @@ def recommend_by_calories():
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500
+    
+@food_bp.route('/test-bert', methods=['GET'])
+def test_bert():
+    try:
+        load_bert_and_data()
+        embeddings, df = get_embeddings_and_df()
+
+        response = {
+            "message": "BERT model and data loaded successfully!",
+            "number_of_recipes": len(df),
+            "embedding_shape": embeddings.shape
+        }
+        return jsonify(response), 200
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
+    
+@food_bp.route('/recommend_top_eight', methods=['GET'])
+def recommend():
+    recipe_id = request.args.get('recipe_id', type=str)
+    if not recipe_id:
+        return jsonify({"error": "Missing recipe_id parameter"}), 400
+
+    try:
+        # Ensure data is loaded
+        load_bert_and_data()
+        recommendations = recommend_with_calorie_filter(recipe_id)
+
+        filtered_recommendations = [
+            r for r in recommendations 
+            if r.get('ImageURL', '').startswith('http')
+        ]
+
+        if not recommendations:
+            return jsonify({"message": "No recommendations found."}), 404
+
+        return jsonify({"recommendations": filtered_recommendations}), 200
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500

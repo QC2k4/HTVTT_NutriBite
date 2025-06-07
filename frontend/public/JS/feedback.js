@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const feedbackForm = document.getElementById("feedbackForm");
   const cancelFeedbackBtn = document.getElementById("cancelFeedback");
   const feedbackFormElement = document.querySelector(".feedback-form");
+  const isLoggedIn = localStorage.getItem("Claim");
 
   // Rating system
   if (stars.length > 0) {
@@ -43,8 +44,13 @@ document.addEventListener("DOMContentLoaded", () => {
   // Feedback form toggle
   if (giveFeedbackBtn && feedbackForm && cancelFeedbackBtn) {
     giveFeedbackBtn.addEventListener("click", () => {
-      feedbackForm.style.display = "block";
-      giveFeedbackBtn.style.display = "none";
+      if (isLoggedIn != null) {
+        feedbackForm.style.display = "block";
+        giveFeedbackBtn.style.display = "none";
+      } else {
+        // Redirect only when the button is clicked by a non-logged-in user
+        window.location.href = "signin.html";
+      }
     });
 
     cancelFeedbackBtn.addEventListener("click", () => {

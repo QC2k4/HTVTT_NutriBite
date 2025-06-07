@@ -36,7 +36,7 @@ async function loadFoodDetails(foodID) {
     // Calories only update
     const caloriesElem = document.querySelector(".calories-value");
     caloriesElem.textContent = food.Calories ?? "-";
-    loadSimilarMeals(food.Calories, food.FoodID);
+    loadSimilarMeals(food.FoodID);
 
     // const descriptionSection = document.getElementById("description-section");
 
@@ -53,10 +53,12 @@ async function loadFoodDetails(foodID) {
   }
 }
 
-async function loadSimilarMeals(currentCalories, currentFoodID) {
+async function loadSimilarMeals(currentFoodID) {
   try {
-    const response = await fetch(`http://localhost:5000/food/recommend_by_calories?calories=${currentCalories}`);
-    const data = await response.json();
+    const response = await fetch(`http://localhost:5000/food/recommend_top_eight?recipe_id=${currentFoodID}`);
+    const responseData  = await response.json();
+    const data = responseData.recommendations;
+    
 
     const similarContainer = document.querySelector(".similar-meals");
     similarContainer.innerHTML = ""; // clear default hardcoded meals
