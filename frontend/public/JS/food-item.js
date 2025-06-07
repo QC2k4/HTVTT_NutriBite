@@ -71,7 +71,7 @@ async function loadSimilarMeals(currentCalories, currentFoodID) {
         <img src="${item.ImageURL}" alt="${item.Title}" />
         <div class="meal-card-content">
           <h3>${item.Title}</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore.</p>
+          
           <p>${item.Calories} kcal</p>
         </div>
       `;
