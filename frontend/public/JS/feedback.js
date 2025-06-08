@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const cancelFeedbackBtn = document.getElementById("cancelFeedback");
   const feedbackFormElement = document.querySelector(".feedback-form");
   const isLoggedIn = localStorage.getItem("Claim");
+  const foodID = new URLSearchParams(window.location.search).get("id");
 
   // Rating system
   if (stars.length > 0) {
@@ -22,24 +23,124 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Add to favorite
-  if (addToFavoriteBtn) {
+  const initFavoriteButton = async () => {
+    const addToFavoriteBtn = document.getElementById("addToFavorite");
+    const foodID = new URLSearchParams(window.location.search).get("id");
+    const email = localStorage.getItem("Claim");
+    const isLoggedIn = !!email;
+
     let isFavorite = false;
-    addToFavoriteBtn.addEventListener("click", () => {
-      isFavorite = !isFavorite;
-      if (isFavorite) {
-        addToFavoriteBtn.innerHTML = "<span>❤️</span> Added to favorite";
-        addToFavoriteBtn.style.backgroundColor = "#f06292";
-        addToFavoriteBtn.style.color = "#880e4f";
-        alert("Recipe added to your favorites!");
-      } else {
-        addToFavoriteBtn.innerHTML = "<span>❤️</span> Add to favorite";
-        addToFavoriteBtn.style.backgroundColor = "#f8bbd0";
-        addToFavoriteBtn.style.color = "#c2185b";
-        alert("Recipe removed from your favorites!");
+
+    if (addToFavoriteBtn && foodID) {
+      // ✅ Step 1: Check if food is already in favorites
+      try {
+        const res = await fetch("http://localhost:5000/food/get-favorite-list", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ Claim: email }),
+        });
+
+        const data = await res.json();
+
+        if (data.success && Array.isArray(data.FavoriteFoods)) {
+          isFavorite = data.FavoriteFoods.some(food => food.FoodID === foodID);
+
+          if (isFavorite) {
+            addToFavoriteBtn.innerHTML = "<span>❤️</span> Added to favorite";
+            addToFavoriteBtn.style.backgroundColor = "#f06292";
+            addToFavoriteBtn.style.color = "#880e4f";
+          }
+        }
+      } catch (err) {
+        console.warn("Could not check favorite status:", err);
       }
-    });
-  }
+
+      // ✅ Step 2: Toggle on click
+      addToFavoriteBtn.addEventListener("click", async () => {
+        try {
+          if (!isLoggedIn) {
+            alert("You need to sign in to use this feature.");
+            window.location.href = "signin.html";
+            return;
+          }        
+          
+          const res = await fetch("http://localhost:5000/food/toggle-favorite", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ Claim: email, FoodID: foodID }),
+          });
+
+          const result = await res.json();
+
+          if (!res.ok) {
+            alert(result.error || "Something went wrong");
+            return;
+          }
+
+          // Flip state
+          isFavorite = !isFavorite;
+
+          if (isFavorite) {
+            addToFavoriteBtn.innerHTML = "<span>❤️</span> Added to favorite";
+            addToFavoriteBtn.style.backgroundColor = "#f06292";
+            addToFavoriteBtn.style.color = "#880e4f";
+            alert("Recipe added to your favorites!");
+          } else {
+            addToFavoriteBtn.innerHTML = "<span>❤️</span> Add to favorite";
+            addToFavoriteBtn.style.backgroundColor = "#f8bbd0";
+            addToFavoriteBtn.style.color = "#c2185b";
+            alert("Recipe removed from your favorites!");
+          }
+        } catch (err) {
+          console.error("Toggle failed:", err);
+          alert("Request failed. Check console.");
+        }
+      });
+    }
+  };
+
+  // // Add to favorite
+  // if (addToFavoriteBtn && isLoggedIn && foodID) {
+  //   let isFavorite = false; // You can try to sync this on load later if needed
+  //   const email = localStorage.getItem("Claim");
+
+  //   addToFavoriteBtn.addEventListener("click", async () => {
+  //     try {
+  //       const res = await fetch("http://localhost:5000/food/toggle-favorite", {
+  //         method: "POST",
+  //         headers: { "Content-Type": "application/json" },
+  //         body: JSON.stringify({ Claim: email, FoodID: foodID }),
+  //       });
+
+  //       const data = await res.json();
+
+  //       if (!res.ok) {
+  //         alert(data.error || "Something went wrong");
+  //         return;
+  //       }
+
+  //       // Toggle visual state and message
+  //       isFavorite = !isFavorite;
+
+  //       if (isFavorite) {
+  //         addToFavoriteBtn.innerHTML = "<span>❤️</span> Added to favorite";
+  //         addToFavoriteBtn.style.backgroundColor = "#f06292";
+  //         addToFavoriteBtn.style.color = "#880e4f";
+  //         alert("Recipe added to your favorites!");
+  //       } else {
+  //         addToFavoriteBtn.innerHTML = "<span>❤️</span> Add to favorite";
+  //         addToFavoriteBtn.style.backgroundColor = "#f8bbd0";
+  //         addToFavoriteBtn.style.color = "#c2185b";
+  //         alert("Recipe removed from your favorites!");
+  //       }
+  //     } catch (err) {
+  //       console.error("Toggle failed:", err);
+  //       alert("Request failed. Check console.");
+  //     }
+  //   });
+  // }
+
+  initFavoriteButton();
 
   // Feedback form toggle
   if (giveFeedbackBtn && feedbackForm && cancelFeedbackBtn) {

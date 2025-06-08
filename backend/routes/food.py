@@ -243,3 +243,37 @@ def recommend():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+    
+@food_bp.route('toggle-favorite', methods=['POST'])
+def toggle_favorite():
+    data = request.get_json()
+
+    try:
+        email = data.get('Claim')
+        food_id = data.get('FoodID')
+
+        if not email or not food_id:
+            return jsonify({"error": "Email or FoodID not provided"}), 400
+
+        # Find user by email
+        user = NguoiDung.query.filter_by(Email=email).first()
+        if not user:
+            return jsonify({"error": "User not found"}), 404
+
+        # Check if favorite exists
+        favorite = FavoriteList.query.filter_by(NguoiDungID=user.NguoiDungID, FoodID=food_id).first()
+
+        if favorite:
+            # Remove from favorites
+            db.session.delete(favorite)
+            db.session.commit()
+            return jsonify({"success": True, "message": "Removed from favorites"}), 200
+        else:
+            # Add to favorites
+            new_favorite = FavoriteList(NguoiDungID=user.NguoiDungID, FoodID=food_id)
+            db.session.add(new_favorite)
+            db.session.commit()
+            return jsonify({"success": True, "message": "Added to favorites"}), 201
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
