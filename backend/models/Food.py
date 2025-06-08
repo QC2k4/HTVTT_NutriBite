@@ -7,6 +7,7 @@ class Food(db.Model):
     Title = db.Column(db.String(255))
     Calories = db.Column(db.Integer)
     Instructions = db.Column(db.Text)
+    Description = db.Column(db.Text)
     ImageURL = db.Column(db.String(255))
     SourceURL = db.Column(db.String(255))
     Partition = db.Column(db.String(10))
