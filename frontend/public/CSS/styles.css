@@ -1322,7 +1322,7 @@ input[readonly] {
 .favorite-section h2 {
   color: #333;
   font-size: 30px;
-  font-weight: bold;
+  font-weight: boldF;
 }
 
 .favorite-item {
@@ -1358,9 +1358,14 @@ input[readonly] {
 }
 
 .food-name-favorite {
-  font-size: 40px;
-  font-weight: 500;
+  font-size: 50px;
+  font-weight: bold;
   color: #333;
+}
+
+.food-description-favorite{
+  width: 80%;
+  margin-top: 10px;
 }
 
 .food-time-fa {

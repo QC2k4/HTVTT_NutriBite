@@ -16,7 +16,7 @@ function showPage(pageId) {
 }
 
 function logout() {
-  if (confirm("Bạn có chắc chắn muốn đăng xuất?")) {
+  if (confirm("Do you want to log out?")) {
     console.log(">> logout() called");
     localStorage.clear();
     sessionStorage.clear();

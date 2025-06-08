@@ -62,7 +62,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <img src="${food.ImageURL || "img/default.png"}" alt="${food.Title}" class="recipe-image" />
           <div class="recipe-info">
             <h3 class="recipe-name">${food.Title}</h3>
-            <p class="recipe-description">${food.Calories} kcal</p>
+            <p class="recipe-description">${food.Description}</p>
             <a href="item-info.html?id=${encodeURIComponent(food.FoodID)}" class="read-more detail-btn">Details</a>
           </div>
         `;

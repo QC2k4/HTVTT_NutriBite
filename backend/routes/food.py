@@ -41,6 +41,7 @@ def get_favorite_list():
             {
                 "FoodID": food.FoodID,
                 "Title": food.Title,
+                'Description': food.Description,
                 "Calories": food.Calories,
                 "ImageURL": food.ImageURL
             }
@@ -67,6 +68,7 @@ def get_all_appropriate():
             {
                 "FoodID": food.FoodID,
                 "Title": food.Title,
+                'Description': food.Description,
                 "Calories": food.Calories,
                 "ImageUrl": food.ImageURL
             }
@@ -94,6 +96,7 @@ def get_random_recommend():
             {
                 "FoodID": food.FoodID,
                 "Title": food.Title,
+                'Description': food.Description,
                 "Calories": food.Calories,
                 "ImageURL": food.ImageURL
             }
@@ -120,6 +123,7 @@ def get_food_information_by_id(food_id):
         return jsonify({
             'FoodID': food.FoodID,
             'Title': food.Title,
+            'Description': food.Description,
             'Calories': food.Calories,
             'Instructions': split_instructions(food.Instructions),
             'ImageURL': food.ImageURL,
@@ -145,6 +149,7 @@ def search_food_by_title():
             {
                 'FoodID': food.FoodID,
                 'Title': food.Title,
+                'Description': food.Description,
                 'Calories': food.Calories,
                 'ImageURL': food.ImageURL
             }
@@ -200,7 +205,7 @@ def recommend_by_calories():
         top_indices = similarities.argsort()[-5:][::-1]
         recommended = filtered_df.iloc[top_indices]
 
-        return jsonify(recommended[['FoodID', 'Title', 'Calories', 'ImageURL']].to_dict(orient='records'))
+        return jsonify(recommended[['FoodID', 'Title', 'Description','Calories', 'ImageURL']].to_dict(orient='records'))
 
     except Exception as e:
         return jsonify({'error': str(e)}), 500

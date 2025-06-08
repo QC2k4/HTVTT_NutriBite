@@ -36,12 +36,14 @@ def load_bert_and_data():
     else:
         print("Generating embeddings for the first time...")
         foods = db.session.query(Food).all()
+        
         data = []
         for food in foods:
             ingredients = ' '.join([ing.Ingredient for ing in food.ingredients])
             data.append({
                 "FoodID": food.FoodID,
                 "Title": food.Title or "",
+                "Description": food.Description or "",
                 "Calories": food.Calories or 0,
                 "ImageURL": food.ImageURL or "",
                 "Ingredients": ingredients,

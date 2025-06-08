@@ -15,6 +15,9 @@ async function loadFoodDetails(foodID) {
     img.src = food.ImageURL;
     img.alt = food.Title;
 
+    //Description
+    document.getElementById("description-content").textContent = food.Description;
+
     // Ingredients
     const ingredientsList = document.querySelector(".ingredients-list");
     ingredientsList.innerHTML = ""; // clear previous
@@ -58,7 +61,6 @@ async function loadSimilarMeals(currentFoodID) {
     const response = await fetch(`http://localhost:5000/food/recommend_top_eight?recipe_id=${currentFoodID}`);
     const responseData  = await response.json();
     const data = responseData.recommendations;
-    
 
     const similarContainer = document.querySelector(".similar-meals");
     similarContainer.innerHTML = ""; // clear default hardcoded meals
@@ -73,7 +75,8 @@ async function loadSimilarMeals(currentFoodID) {
         <img src="${item.ImageURL}" alt="${item.Title}" />
         <div class="meal-card-content">
           <h3>${item.Title}</h3>
-          
+          <p></p>
+          <p>${item.Description}</p>
           <p>${item.Calories} kcal</p>
         </div>
       `;
