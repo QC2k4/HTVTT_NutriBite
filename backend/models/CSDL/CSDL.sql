@@ -35,6 +35,7 @@ GO
 CREATE TABLE Food (
     FoodID VARCHAR(20) PRIMARY KEY,
     Title VARCHAR(255),
+	Description TEXT,
     Calories INT,
     Instructions TEXT,
     ImageURL VARCHAR(255),
