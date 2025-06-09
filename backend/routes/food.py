@@ -7,6 +7,7 @@ from models.FavoriteList import FavoriteList
 from models.Food import Food, FoodIngredient
 from sklearn.metrics.pairwise import cosine_similarity # type: ignore
 from bert_loader import get_embeddings_and_df, load_bert_and_data, recommend_with_calorie_filter
+from weighted_system import get_trending_foods
 import numpy as np
 import logging
 import re
@@ -282,3 +283,8 @@ def toggle_favorite():
 
     except Exception as e:
         return jsonify({"error": str(e)}), 500
+
+@food_bp.route('/trending', methods=['GET'])
+def trending():
+    trending_foods = get_trending_foods()
+    return jsonify(trending_foods)

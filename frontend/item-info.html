@@ -15,8 +15,7 @@
       <img src="img/logo.png" alt="" class="logo-img" />
       <button
         class="return"
-        onclick="window.location.href='index-after-signin.html'"
-      >
+        onclick="handleReturn()">
         Return
       </button>
     </div>
@@ -334,5 +333,14 @@
     <script src="public/JS/feedback.js"></script>
     <script src="public/JS/food-item.js"></script>
     <script src="public/JS/script.js"></script>
+    <script>
+      function handleReturn() {
+        if (localStorage.getItem('Claim')) {
+          window.location.href = 'index-after-signin.html';
+        } else {
+          window.location.href = 'index.html';
+        }
+      }
+    </script>
   </body>
 </html>
