@@ -1,129 +1,150 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Update</title>
-  <link rel="stylesheet" href="public/CSS/styles.css" />
-  <link href='https://fonts.googleapis.com/css?family=Angkor' rel='stylesheet'>
-
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Update</title>
+    <link rel="stylesheet" href="public/CSS/styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css?family=Angkor"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
     <div class="logo-section">
-        <img src="img/logo.png" alt="" class="logo-img">
-        <button class="return" onclick="window.location.href='index-after-signin.html'">Return</button>
+      <img src="img/logo.png" alt="" class="logo-img" />
+      <button
+        class="return"
+        onclick="window.location.href='index-after-signin.html'"
+      >
+        Return
+      </button>
     </div>
 
     <div class="center-wrapper">
-        <div class="signin-box">
+      <div class="signin-box">
+        <h1 class="form-title">Update</h1>
 
-            <h1 class="form-title">Update</h1>
-      
-            <form id="updateForm">
-              <div class="row">
-                <div class="input-group">
-                  <label>First Name</label>
-                  <input type="text" name="first_name" required />
-                </div>
-                <div class="input-group">
-                  <label>Last Name</label>
-                  <input type="text" name="last_name" required />
-                </div>
-              </div>
-      
-              <div class="input-group">
-                <label>Email</label>
-                <input type="email" name="email" required />
-              </div>
-      
-              <div class="input-group">
-                <label>Phone</label>
-                <input type="tel" name="phone" required />
-              </div>
-
-              <div class="gender-group">
-                <label>Gender</label>
-                <label><input type="radio" name="gender" value="Male"> Male</label>
-                <label><input type="radio" name="gender" value="Female" checked> Female</label>
-              </div>
-      
-              <div class="row">
-                <div class="input-group">
-                  <label>Height</label>
-                  <input type="text" name="height" placeholder="cm"/>
-                </div>
-                <div class="input-group">
-                  <label>Weight</label>
-                  <input type="text" name="weight" placeholder="kg"/>
-                </div>
-              </div>
-      
-              <div class="row">
-                <div class="input-group">
-                  <label>Birthdate</label>
-                  <input type="date" name="birthdate" id="birthdate" />
-                </div>
-                <div class="input-group">
-                  <label>Age</label>
-                  <input type="number" name="age" id="age" readonly />
-                </div>
-              </div>
-              
-                <div class="input-group">
-                    <label>Religion</label>
-                    <select>
-                      <option value="" disabled selected>Select your religion</option>
-                      <option value="Buddhism">Buddhism</option>
-                      <option value="Christianity">Christianity</option>
-                      <option value="Islam">Islam</option>
-                      <option value="Hinduism">Hinduism</option>
-                      <option value="None">Prefer not to say</option>
-                      <option value="Other">Other</option>
-                    </select>
-                </div>
-      
-              <div class="btn-row">
-                <button type="submit" class="reset-btn" id="update-btn">Update</button>
-                <button type="button" class="reset-btn" id="change-pwd" onclick="directPage('change-password')">Change password</button>
-              </div>
-      
-              <p class="success-message" id="successMsg">Updated!</p>
-            </form>
+        <form id="updateForm">
+          <div class="row">
+            <div class="input-group">
+              <label>First Name</label>
+              <input type="text" name="first_name" required />
+            </div>
+            <div class="input-group">
+              <label>Last Name</label>
+              <input type="text" name="last_name" required />
+            </div>
           </div>
+
+          <div class="input-group">
+            <label>Email</label>
+            <input type="email" name="email" required />
+          </div>
+
+          <div class="input-group">
+            <label>Phone</label>
+            <input type="tel" name="phone" required />
+          </div>
+
+          <div class="gender-group">
+            <label>Gender</label>
+            <label
+              ><input type="radio" name="gender" value="Male" /> Male</label
+            >
+            <label
+              ><input type="radio" name="gender" value="Female" checked />
+              Female</label
+            >
+          </div>
+
+          <div class="row">
+            <div class="input-group">
+              <label>Height</label>
+              <input type="text" name="height" placeholder="cm" />
+            </div>
+            <div class="input-group">
+              <label>Weight</label>
+              <input type="text" name="weight" placeholder="kg" />
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="input-group">
+              <label>Birthdate</label>
+              <input type="date" name="birthdate" id="birthdate" />
+            </div>
+            <div class="input-group">
+              <label>Age</label>
+              <input type="number" name="age" id="age" readonly />
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label>Religion</label>
+            <select>
+              <option value="" disabled selected>Select your religion</option>
+              <option value="Buddhism">Buddhism</option>
+              <option value="Christianity">Christianity</option>
+              <option value="Islam">Islam</option>
+              <option value="Hinduism">Hinduism</option>
+              <option value="None">Prefer not to say</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="btn-row">
+            <button type="submit" class="reset-btn" id="update-btn">
+              Update
+            </button>
+            <button
+              type="button"
+              class="reset-btn"
+              id="change-pwd"
+              onclick="directPage('change-password')"
+            >
+              Change password
+            </button>
+          </div>
+
+          <p class="success-message" id="successMsg">Updated!</p>
+        </form>
+      </div>
     </div>
 
     <footer id="footer"></footer>
 
-      <script src="public/JS/update.js">
-        const form = document.getElementById('updateForm');
-        const successMsg = document.getElementById('successMsg');
-      
-        const birthdateInput = document.getElementById('birthdate');
-        const ageInput = document.getElementById('age');
-      
-        function calculateAgeFromBirthdate(birthdateString) {
-          const birthdate = new Date(birthdateString);
-          const today = new Date();
-          let age = today.getFullYear() - birthdate.getFullYear();
-          const m = today.getMonth() - birthdate.getMonth();
-      
-          if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
-            age--;
-          }
-      
-          return age;
+    <script src="public/JS/script.js"></script>
+    <script src="public/JS/update.js">
+      const form = document.getElementById('updateForm');
+      const successMsg = document.getElementById('successMsg');
+
+      const birthdateInput = document.getElementById('birthdate');
+      const ageInput = document.getElementById('age');
+
+      function calculateAgeFromBirthdate(birthdateString) {
+        const birthdate = new Date(birthdateString);
+        const today = new Date();
+        let age = today.getFullYear() - birthdate.getFullYear();
+        const m = today.getMonth() - birthdate.getMonth();
+
+        if (m < 0 || (m === 0 && today.getDate() < birthdate.getDate())) {
+          age--;
         }
-      
-        birthdateInput.addEventListener('change', () => {
-          const age = calculateAgeFromBirthdate(birthdateInput.value);
-          ageInput.value = age;
-        });
-      
-        form.addEventListener('submit', function(e) {
-          e.preventDefault();
-          successMsg.style.display = 'block';
-          setTimeout(() => successMsg.style.display = 'none', 3000);
-        });
-      </script>
-      </body>
+
+        return age;
+      }
+
+      birthdateInput.addEventListener('change', () => {
+        const age = calculateAgeFromBirthdate(birthdateInput.value);
+        ageInput.value = age;
+      });
+
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        successMsg.style.display = 'block';
+        setTimeout(() => successMsg.style.display = 'none', 3000);
+      });
+    </script>
+  </body>
 </html>

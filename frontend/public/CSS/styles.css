@@ -188,8 +188,9 @@ nav a {
 
 /* About NutriBite */
 .about-nutribite {
-  background-color: #f9f9ff;
+  /* background-color: #f9f9ff; */
   padding: 60px 0;
+  margin-top: 50px;
 }
 
 .about-container {

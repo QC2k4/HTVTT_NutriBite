@@ -1,36 +1,53 @@
 <!DOCTYPE html>
 <html lang="vi">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sign Up</title>
-  <link href='https://fonts.googleapis.com/css?family=Angkor' rel='stylesheet'>
-  <link rel="stylesheet" href="public/CSS/styles.css">
-</head>
-<body>
-  <div class="logo-section">
-      <img src="img/logo.png" alt="" class="logo-img">
-      <button class="return" onclick="window.location.href='index.html'">Return</button>
-  </div>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sign Up</title>
+    <link
+      href="https://fonts.googleapis.com/css?family=Angkor"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="public/CSS/styles.css" />
+  </head>
+  <body>
+    <div class="logo-section">
+      <img src="img/logo.png" alt="" class="logo-img" />
+      <button class="return" onclick="window.location.href='index.html'">
+        Return
+      </button>
+    </div>
 
-  <div class="center-wrapper">
-    <div class="signin-box">
+    <div class="center-wrapper">
+      <div class="signin-box">
         <h1>Sign Up</h1>
         <p class="subtitle">Join us and discover your next favorite meal!</p>
-    
+
         <form>
           <label>First Name</label>
-          <input type="text" name="firstName" placeholder="Enter your first name">
-        
+          <input
+            type="text"
+            name="firstName"
+            placeholder="Enter your first name"
+          />
+
           <label>Last Name</label>
-          <input type="text" name="lastName" placeholder="Enter your last name">
-        
+          <input
+            type="text"
+            name="lastName"
+            placeholder="Enter your last name"
+          />
+
           <label>Email</label>
-          <input type="email" name="email" placeholder="Enter your email">
-        
+          <input type="email" name="email" placeholder="Enter your email" />
+
           <label>Phone</label>
-          <input type="text" name="phone" placeholder="Enter your phone number">
-        
+          <input
+            type="text"
+            name="phone"
+            placeholder="Enter your phone number"
+          />
+
           <label>Religion</label>
           <select name="religion">
             <option value="" disabled selected>Select your religion</option>
@@ -41,36 +58,58 @@
             <option value="None">Prefer not to say</option>
             <option value="Other">Other</option>
           </select>
-        
+
           <div class="password-box">
             <label>New password</label>
-            <input type="password" name="password" placeholder="Enter your new password" id="new-password">
-            <span class="toggle-password" onclick="togglePassword('new-password', this)">🙈</span>
+            <input
+              type="password"
+              name="password"
+              placeholder="Enter your new password"
+              id="new-password"
+            />
+            <span
+              class="toggle-password"
+              onclick="togglePassword('new-password', this)"
+              >🙈</span
+            >
           </div>
-          
+
           <div class="password-box">
             <label>Confirm password</label>
-            <input type="password" name="confirmPassword" placeholder="Enter your new password" id="confirm-password">
-            <span class="toggle-password" onclick="togglePassword('confirm-password', this)">🙈</span>
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Enter your new password"
+              id="confirm-password"
+            />
+            <span
+              class="toggle-password"
+              onclick="togglePassword('confirm-password', this)"
+              >🙈</span
+            >
           </div>
-        
-          <button type="submit" class="signin-btn" id="signup-btn">Sign Up</button>
+
+          <button type="submit" class="signin-btn" id="signup-btn">
+            Sign Up
+          </button>
         </form>
-    
-        <div class="divider">or</div>
+
+        <!-- <div class="divider">or</div>
     
         <div class="social-buttons">
           <button class="social-btn">Sign up with Google</button>
           <button class="social-btn">Sign up with Facebook</button>
         </div>
-    
-        <p class="signup">Already had account? <a href="signin.html">Sign in now.</a></p>
+     -->
+        <p class="signup">
+          Already had account? <a href="signin.html">Sign in now.</a>
+        </p>
       </div>
-  </div>
+    </div>
 
-  <footer id="footer"></footer>
+    <footer id="footer"></footer>
 
-  <script src="public/JS/script.js"></script>
-  <script src="public/JS/signup.js"></script>
-</body>
+    <script src="public/JS/script.js"></script>
+    <script src="public/JS/signup.js"></script>
+  </body>
 </html>
