@@ -4,6 +4,7 @@ from extensions import db
 from routes.user import user_bp  # Import the user blueprint
 from routes.food import food_bp
 from routes.comment import comment_bp
+from routes.blog import blog_bp
 from bert_loader import load_bert_and_data
 import config
 
@@ -22,7 +23,7 @@ def create_app():
     app.register_blueprint(user_bp, url_prefix='/user')
     app.register_blueprint(food_bp, url_prefix='/food')
     app.register_blueprint(comment_bp, url_prefix='/comment')
-    
+    app.register_blueprint(blog_bp, url_prefix='/blog')
     return app
 
 # For running the app directly
