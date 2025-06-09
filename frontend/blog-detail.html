@@ -9,7 +9,7 @@
 <body style="background-color: #e9e3ff;">
     <div class="logo-section">
         <img src="img/logo.png" alt="" class="logo-img">
-        <button class="return" style="background-color: white; color: #d2c2ff;" onclick="window.location.href='index-after-signin.html'">Return</button>
+        <button class="return" style="background-color: white; color: #d2c2ff;" onclick="handleReturn()">Return</button>
     </div>
 
     <div class="explore-container" style="margin-top: 100px;">
@@ -146,5 +146,14 @@
             window.location.href = 'index-after-signin.html';
         });
     </script>
+    <script>
+        function handleReturn() {
+          if (localStorage.getItem('Claim')) {
+            window.location.href = 'index-after-signin.html';
+          } else {
+            window.location.href = 'index.html';
+          }
+        }
+      </script>
 </body>
 </html>
