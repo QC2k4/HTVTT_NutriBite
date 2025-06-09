@@ -288,3 +288,51 @@ def toggle_favorite():
 def trending():
     trending_foods = get_trending_foods()
     return jsonify(trending_foods)
+
+
+
+@food_bp.route('get-bmi-recommend', methods=['GET'])
+def get_bmi_recommend():
+    try:
+        bmi = request.args.get('bmi', type=float)
+        if bmi is None:
+            return jsonify({"success": False, "message": "BMI parameter is required."}), 400
+        
+        # Heuristic calorie ranges based on BMI
+        if bmi < 18.5:
+            min_cal, max_cal = 400, 2000
+        elif 18.5 <= bmi < 25:
+            min_cal, max_cal = 150, 600
+        elif 25 <= bmi < 30:
+            min_cal, max_cal = 100, 400
+        else:
+            min_cal, max_cal = 20, 300
+        
+        random_foods = (
+            db.session.query(Food)
+            .filter(
+                Food.ImageURL.startswith("http"),
+                Food.Calories >= min_cal,
+                Food.Calories <= max_cal
+            )
+            .order_by(func.newid())
+            .limit(4)
+            .all()
+        )
+        
+        result = [
+            {
+                "FoodID": food.FoodID,
+                "Title": food.Title,
+                "Description": food.Description,
+                "Calories": food.Calories,
+                "ImageURL": food.ImageURL
+            }
+            for food in random_foods
+        ]
+
+        return jsonify({"success": True, "data": result}), 200
+
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({"success": False, "message": str(e)}), 500

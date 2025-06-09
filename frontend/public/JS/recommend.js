@@ -1,9 +1,17 @@
 const renderRecommendations = async () => {
     const container = document.getElementById("recommendContainer");
+    const bmi = localStorage.getItem("userBMI");
     container.innerHTML = ""; // Clear previous content if needed
   
     try {
-      const response = await fetch("http://localhost:5000/food/get-random-recommend");
+      var response = null;
+      if (bmi != "null"){
+        response = await fetch(`http://localhost:5000/food/get-bmi-recommend?bmi=${bmi}`);
+      }
+      else {
+        response = await fetch("http://localhost:5000/food/get-random-recommend");
+      }
+
       const result = await response.json();
   
       if (result.success && Array.isArray(result.data)) {
