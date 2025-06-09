@@ -1363,11 +1363,11 @@ input[readonly] {
   color: #333;
 }
 
-.meal-card-contnet{
+.meal-card-contnet {
   margin-left: 0 10px;
 }
 
-.food-description-favorite{
+.food-description-favorite {
   width: 80%;
   margin-top: 10px;
 }
@@ -1518,6 +1518,7 @@ input[readonly] {
 
 .featured-post h2 {
   font-size: 30px;
+  color: #333;
 }
 
 .featured-img {
@@ -1595,7 +1596,7 @@ input[readonly] {
 }
 
 .article-card h3 {
-  color: #8f79ff;
+  color: #333;
   margin-bottom: 0.5rem;
 }
 
@@ -1668,7 +1669,7 @@ input[readonly] {
 
 .post-title {
   color: #8f79ff;
-  font-size: 2rem;
+  font-size: 2.2rem;
   margin-bottom: 1rem;
 }
 
@@ -1689,13 +1690,14 @@ input[readonly] {
 .post-content {
   line-height: 1.8;
   margin-bottom: 2rem;
+  font-size: 17px;
 }
 
 .post-part {
   font-size: 37px;
 }
 
-.post-content h2 {
+.post-content h3 {
   color: #8f79ff;
   margin: 1rem 0rem;
 }
@@ -1706,6 +1708,25 @@ input[readonly] {
 
 .post-content ul {
   margin: 1rem 0 1rem 2rem;
+}
+
+.post-content li {
+  margin-bottom: 8px;
+}
+
+.post-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 20px 0;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border: 1px solid #ddd;
+  text-align: center;
+}
+
+.post-content th {
+  padding: 12px 15px;
+  font-size: 1.3rem;
 }
 
 .back-to-blog {

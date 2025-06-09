@@ -50,19 +50,179 @@ INSERT INTO NguoiDung (HoTen, NgaySinh, Tuoi, Email, Phone, TonGiao, GioiTinh, C
 (N'Nguyễn Thị Bích', '1997-12-14', 27, 'nguyenthibich@gmail.com', '0978123456', N'Không', N'Nữ', 1.60, 51, 19.92, NULL, 19),
 (N'Lê Văn Tùng', '1988-06-05', 36, 'levantung@gmail.com', '0968777555', N'Không', N'Nam', 1.78, 82, 25.89, NULL, 20);
 
---INSERT INTO Blog
+--INSERT INTO Blog (old)
+--INSERT INTO Blog (NguoiDungID, PostTitle, FeatureImage, Category, PostContent)
+--VALUES 
+--(1, N'Thực phẩm tốt cho sức khỏe tim mạch', 'https://th.bing.com/th/id/OIP.ssl1ygs-rQgSFeD5skT3swHaE8?r=0&rs=1&pid=ImgDetMain', N'Dinh dưỡng', N'Bài viết chia sẻ các loại thực phẩm giúp cải thiện sức khỏe tim mạch như cá hồi, hạt óc chó, rau xanh,...'),
+
+--(2, N'Cách nấu món salad giảm cân nhanh chóng', 'https://img-global.cpcdn.com/recipes/36439f4499cb47a3/1200x630cq70/photo.jpg', N'Giảm cân', N'Hướng dẫn chế biến món salad ít calo phù hợp cho người muốn giảm cân mà vẫn ngon miệng.'),
+
+--(3, N'5 món ăn giàu protein cho người tập gym', 'img/blog3.jpg', N'Fitness', N'Giới thiệu các món ăn giàu protein như ức gà, trứng, yến mạch, thích hợp với người tập thể hình.'),
+
+--(4, N'Top thực phẩm giúp cải thiện tiêu hóa', 'img/blog4.jpg', N'Sức khỏe', N'Các thực phẩm như sữa chua, chuối, gừng có tác dụng tốt trong việc hỗ trợ hệ tiêu hóa.'),
+
+--(5, N'Món ăn truyền thống ngày Tết Việt Nam', 'img/blog5.jpg', N'Ẩm thực Việt', N'Khám phá các món ăn đặc trưng ngày Tết như bánh chưng, thịt kho trứng, dưa hành,...');
+
+--INSERT INTO Blog (new)
 INSERT INTO Blog (NguoiDungID, PostTitle, FeatureImage, Category, PostContent)
 VALUES 
-(1, N'Thực phẩm tốt cho sức khỏe tim mạch', 'images/blog1.jpg', N'Dinh dưỡng', N'Bài viết chia sẻ các loại thực phẩm giúp cải thiện sức khỏe tim mạch như cá hồi, hạt óc chó, rau xanh,...'),
+(1, N'10 siêu thực phẩm bảo vệ trái tim bạn mỗi ngày', 
+N'https://www.futurefoodsystems.com.au/wp-content/uploads/2022/03/Variety-of-proteins.-Credit-Shutterstock_1044279943_CROP-scaled.jpg', 
+N'Dinh dưỡng', 
+N'<p>Theo Hiệp hội Tim mạch Hoa Kỳ, 80% các bệnh tim mạch có thể phòng ngừa được thông qua chế độ ăn uống và lối sống. Dưới đây là 10 siêu thực phẩm bạn nên bổ sung ngay hôm nay:</p>
 
-(2, N'Cách nấu món salad giảm cân nhanh chóng', 'images/blog2.jpg', N'Giảm cân', N'Hướng dẫn chế biến món salad ít calo phù hợp cho người muốn giảm cân mà vẫn ngon miệng.'),
+<h3>1. Cá hồi hoang dã - Nguồn omega-3 tuyệt vời</h3>
+<p>Chứa DHA và EPA giúp giảm triglyceride máu 25-30% nếu ăn 2-3 lần/tuần. Cách chế biến tốt nhất: hấp hoặc nướng giấy bạc.</p>
 
-(3, N'5 món ăn giàu protein cho người tập gym', 'images/blog3.jpg', N'Fitness', N'Giới thiệu các món ăn giàu protein như ức gà, trứng, yến mạch, thích hợp với người tập thể hình.'),
+<h3>2. Yến mạch nguyên hạt</h3>
+<p>Beta-glucan trong yến mạch giúp giảm LDL cholesterol 5-10% khi dùng 3g/ngày. Thử ngay công thức: cháo yến mạch với hạt chia và quả việt quất.</p>
 
-(4, N'Top thực phẩm giúp cải thiện tiêu hóa', 'images/blog4.jpg', N'Sức khỏe', N'Các thực phẩm như sữa chua, chuối, gừng có tác dụng tốt trong việc hỗ trợ hệ tiêu hóa.'),
+<h3>3. Rau lá xanh đậm</h3>
+<p>Cải xoăn, bó xôi giàu vitamin K1 giúp ngăn ngừa vôi hóa động mạch. Mỗi ngày 1 chén rau luộc giảm 16% nguy cơ bệnh tim.</p>
 
-(5, N'Món ăn truyền thống ngày Tết Việt Nam', 'images/blog5.jpg', N'Ẩm thực Việt', N'Khám phá các món ăn đặc trưng ngày Tết như bánh chưng, thịt kho trứng, dưa hành,...');
+<h3>4. Quả bơ</h3>
+<p>Chất béo không bão hòa đơn giúp tăng HDL cholesterol tốt. 1/2 quả bơ mỗi ngày cung cấp 20% nhu cầu chất xơ.</p>
 
+<h3>5. Các loại đậu</h3>
+<p>Đậu đen, đậu lăng giàu protein thực vật và chất xơ hòa tan. Nghiên cứu cho thấy ăn đậu 4 lần/tuần giảm 22% nguy cơ bệnh mạch vành.</p>
+
+<p>Hãy kết hợp những thực phẩm này với chế độ tập luyện 30 phút/ngày để có trái tim khỏe mạnh dài lâu!</p>'),
+
+(2, N'Salad detox giảm 3kg trong 1 tuần - Công thức chuẩn', 
+N'https://img-global.cpcdn.com/recipes/36439f4499cb47a3/1200x630cq70/photo.jpg', 
+N'Giảm cân', 
+N'<p>Chuyên gia dinh dưỡng Nguyễn Thị Hà (BV Vinmec) chia sẻ công thức salad giúp nhiều người giảm 2-3kg/tuần khi kết hợp với vận động:</p>
+
+<h3>Nguyên liệu cho 1 phần ăn (350 calo):</h3>
+<ul>
+<li>50g ức gà không da (luộc/xé sợi)</li>
+<li>1 quả trứng luộc cắt lát</li>
+<li>1/2 quả bơ chín</li>
+<li>10 quả cà chua bi</li>
+<li>50g xà lách Romaine</li>
+<li>1 thìa hạt hướng dương</li>
+</ul>
+
+<h3>Công thức sốt đặc biệt:</h3>
+<p>2 thìa dầu ôliu + 1 thìa mật ong + 1 thìa giấm táo + 1 tép tỏi băm + 1/2 thìa gừng tươi + muối tiêu.</p>
+
+<h3>Hướng dẫn chi tiết:</h3>
+<ol>
+<li>Rửa rau với nước muối loãng, để ráo</li>
+<li>Xếp lớp xà lách dưới đĩa</li>
+<li>Bày các nguyên liệu thành từng phần riêng biệt</li>
+<li>Rưới sốt đều trước khi ăn 5 phút</li>
+<li>Thêm ít rau thơm (bạc hà, húng quế) để tăng hương vị</li>
+</ol>
+
+<p><strong>Lưu ý:</strong> Ăn kèm 1 ly nước chanh ấm vào sáng sớm để tăng hiệu quả detox. Kết hợp đi bộ 10.000 bước/ngày.</p>'),
+
+(3, N'Thực đơn 7 ngày tăng cơ cho gymer từ chuyên gia', 
+N'https://s30386.pcdn.co/wp-content/uploads/2020/05/protein-aging-768x512.png', 
+N'Fitness', 
+N'<p>HLV thể hình quốc tế Mike Chang chia sẻ thực đơn chuẩn cho người tập gym muốn tăng cơ giảm mỡ:</p>
+
+<h3>Nguyên tắc vàng:</h3>
+<ul>
+<li>2.2g protein/kg cân nặng/ngày</li>
+<li>Uống 40ml nước/kg cân nặng</li>
+<li>Ăn 5-6 bữa nhỏ/ngày</li>
+</ul>
+
+<h3>Thực đơn mẫu 1 ngày:</h3>
+<table border="1">
+<tr>
+<th>Bữa</th>
+<th>Món ăn</th>
+<th>Lượng calo</th>
+</tr>
+<tr>
+<td>Sáng</td>
+<td>5 lòng trắng trứng + 1 chén yến mạch + 1 quả chuối</td>
+<td>450</td>
+</tr>
+<tr>
+<td>Phụ sáng</td>
+<td>Sữa chua Hy Lạp + hạt óc chó</td>
+<td>300</td>
+</tr>
+<tr>
+<td>Trưa</td>
+<td>150g ức gà + 1 chén gạo lứt + rau củ hấp</td>
+<td>550</td>
+</tr>
+<tr>
+<td>Pre-workout</td>
+<td>1 quả táo + 1 thìa bơ đậu phộng</td>
+<td>250</td>
+</tr>
+<tr>
+<td>Post-workout</td>
+<td>Whey protein + 1 quả chuối</td>
+<td>300</td>
+</tr>
+<tr>
+<td>Tối</td>
+<td>200g cá hồi + khoai lang + salad</td>
+<td>600</td>
+</tr>
+</table>
+
+<h3>Lời khuyên:</h3>
+<p>Nên thay đổi thực đơn mỗi 2 tuần để cơ thể không nhàm chán. Kết hợp ngủ đủ 7-8h/đêm để cơ bắp phục hồi.</p>'),
+
+(4, N'7 thực phẩm vàng cho hệ tiêu hóa khỏe mạnh', 
+N'https://nld.mediacdn.vn/291774122806476800/2023/3/20/photo-1-16792782517561998605048.jpg', 
+N'Sức khỏe', 
+N'<p>TS. Trần Minh Đạo (Viện Dinh dưỡng) khuyến cáo 7 thực phẩm nên có trong bữa ăn hàng ngày:</p>
+
+<h3>1. Sữa chua probiotic</h3>
+<p>Chọn loại chứa ít nhất 1 tỷ CFU/g. Giúp cân bằng hệ vi sinh, giảm 42% triệu chứng IBS (hội chứng ruột kích thích).</p>
+
+<h3>2. Gừng tươi</h3>
+<p>1 ly trà gừng mật ong buổi sáng giúp kích thích tiêu hóa, giảm đầy hơi. Chứa gingerol kháng viêm mạnh.</p>
+
+<h3>3. Đu đủ chín</h3>
+<p>Enzyme papain phân giải protein, giảm táo bón. Ăn 100g sau bữa ăn giúp tiêu hóa tốt hơn.</p>
+
+<h3>4. Tỏi đen lên men</h3>
+<p>Giàu prebiotic, tăng lợi khuẩn Bifidobacterium gấp 5 lần tỏi thường.</p>
+
+<h3>5. Nấm sữa kefir</h3>
+<p>Chứa 30-50 chủng lợi khuẩn, nhiều hơn sữa chua thông thường.</p>
+
+<h3>6. Atiso đỏ (hibiscus)</h3>
+<p>Trà atiso giúp thanh lọc gan, tăng bài tiết mật hỗ trợ tiêu hóa chất béo.</p>
+
+<h3>7. Hạt chia</h3>
+<p>Chất xơ hòa tan tạo gel bảo vệ niêm mạc ruột. Ngâm 1 thìa hạt chia trong nước ấm qua đêm.</p>
+
+<p>Kết hợp với thói quen ăn chậm nhai kỹ và tránh căng thẳng để có hệ tiêu hóa khỏe mạnh!</p>'),
+
+(5, N'Ẩm thực Tết cổ truyền: Nét đẹp văn hóa Việt', 
+N'https://genmice.com/unknown-facts/8-Absolutely-Bizarre-Things-You-Need-to-Know-About-China/654.jpeg', 
+N'Ẩm thực Việt', 
+N'<p>Nhà nghiên cứu văn hóa dân gian Nguyễn Hùng Vĩ giải mã ý nghĩa sâu xa từ mâm cỗ Tết:</p>
+
+<h3>1. Bánh chưng - bánh tét</h3>
+<p>Tượng trưng cho trời tròn đất vuông. Lá dong bọc ngoài như tình cảm gia đình bao bọc lẫn nhau. Gạo nếp thể hiện sự no đủ.</p>
+
+<h3>2. Giò lụa - chả quế</h3>
+<p>Màu hồng của giò tượng trưng cho sự may mắn. Hình tròn của chả thể hiện sự viên mãn trọn vẹn.</p>
+
+<h3>3. Thịt đông</h3>
+<p>Từ món ăn của miền Bắc, thể hiện sự đoàn tụ khi cả nhà cùng chờ đông lại.</p>
+
+<h3>4. Dưa hành - củ kiệu</h3>
+<p>Vị chua cay giúp cân bằng âm dương trong cơ thể sau những bữa ăn nhiều đạm.</p>
+
+<h3>5. Mứt Tết</h3>
+<p>Mỗi loại mứt mang ý nghĩa riêng: mứt gừng - ấm áp, mứt bí - bền vững, mứt dừa - ngọt ngào.</p>
+
+<h3>Bảo tồn nét đẹp truyền thống</h3>
+<p>Ngày nay, nhiều gia đình trẻ vẫn duy trì phong tục gói bánh chưng đêm 30, cùng nhau chuẩn bị mâm cỗ để giữ gìn nét văn hóa độc đáo này.</p>
+
+<p>"Ăn Tết" không chỉ là thưởng thức ẩm thực mà còn là giữ gìn những giá trị tinh thần quý báu của dân tộc.</p>');
 
 -- INSERT INTO Food và Food_Ingredient
 INSERT INTO Food (FoodID, Title, Description, Calories, Instructions, ImageURL, SourceURL, Partition)
